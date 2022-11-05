@@ -16,6 +16,11 @@ class System(ApiEntryPoint):
         return json
 
     def getSystem(cls, systemName):
+        """
+
+        :param systemName:
+        :return:
+        """
         json = cls.query({'systemName': systemName,
                           'showId': 1,
                           'showCoordinates': 1,
