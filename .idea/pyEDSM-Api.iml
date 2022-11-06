@@ -10,6 +10,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/connector/bgs" />
       <excludeFolder url="file://$MODULE_DIR$/src/connector/eddb" />
       <excludeFolder url="file://$MODULE_DIR$/src/connector/inara" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/.pytest_cache" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.10 (pyED-Api-Connector)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

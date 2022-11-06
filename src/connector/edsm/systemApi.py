@@ -3,6 +3,9 @@ from connector.base.base import ApiEntryPoint
 
 
 class Bodies(ApiEntryPoint):
+    """
+    Informastion of Bodies
+    """
     url = ApiEntryPoint.url_edsm + "system-v1/bodies"
 
     def __init__(self):
@@ -23,7 +26,8 @@ class Bodies(ApiEntryPoint):
     def getBodies(cls, systemName):
         """
         get Bodies for a systemname
-        :param systemName:
+
+        :param systemName: Use the systemName parameter to filter flight logs by system name.
         :return: bodies in json
         """
         json = cls.query({'systemName': systemName})
@@ -32,7 +36,8 @@ class Bodies(ApiEntryPoint):
     def getBodiesById(cls, systemId):
         """
         get Bodies for a systemId
-        :param systemId:  ID of a system
+
+        :param systemId: By passing directly our intenral ID, you can override the system name.
         :return: bodies in json
         """
         json = cls.query({'systemId': str(systemId)})
@@ -49,6 +54,12 @@ class ScanValues(ApiEntryPoint):
         pass
 
     def query(cls, params):
+        """
+         create the query based on the parameters and retrieve data from Api
+
+         :param params:
+         :return: json
+         """
         try:
             json = super().query(params)
         except exception.NotFoundError:
@@ -58,8 +69,9 @@ class ScanValues(ApiEntryPoint):
     def getEstimatedValue(cls, systemName):
         """
         Get estimated scan values of a system by a systemname
-        :param systemName:
-        :return:
+
+        :param systemName: Use the systemName parameter to filter flight logs by system name.
+        :return: json
         """
         json = cls.query({'systemName': systemName})
         return json
@@ -67,8 +79,9 @@ class ScanValues(ApiEntryPoint):
     def getEstimatedValueById(cls, systemId):
         """
         Get estimated scan values of a system by a systemId
-        :param systemId:
-        :return:
+
+        :param systemId: By passing directly our intenral ID, you can override the system name.
+        :return: json
         """
         json = cls.query({'systemId': str(systemId)})
         return json
@@ -84,6 +97,12 @@ class Station(ApiEntryPoint):
         pass
 
     def query(cls, params):
+        """
+         create the query based on the parameters and retrieve data from Api
+
+         :param params:
+         :return: json
+         """
         try:
             json = super().query(params)
         except exception.NotFoundError:
@@ -93,8 +112,9 @@ class Station(ApiEntryPoint):
     def getStation(cls, systemName):
         """
         Get information about stations in a system by a systemname
-        :param systemName:
-        :return:
+
+        :param systemName: Use the systemName parameter to filter flight logs by system name.
+        :return: json
         """
         json = cls.query({'systemName': systemName})
         return json
@@ -102,8 +122,9 @@ class Station(ApiEntryPoint):
     def getStationById(cls, systemId):
         """
         Get information about stations in a system by a systemId
-        :param systemId:
-        :return:
+
+        :param systemId: By passing directly our intenral ID, you can override the system name.
+        :return: json
         """
         json = cls.query({'systemId': str(systemId)})
         return json

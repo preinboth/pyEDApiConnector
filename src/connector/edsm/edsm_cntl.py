@@ -3,6 +3,8 @@ from connector.edsm.systemsApi import System, Systems
 
 
 class EdsmCntl():
+    # TODO: Documentation
+    # TODO: Implementation
     __edsm_system = System()
     __edsm_systems = Systems()
     __edsm_bodies = Bodies()

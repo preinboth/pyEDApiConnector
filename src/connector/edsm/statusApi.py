@@ -9,5 +9,4 @@ class StatusApi(base.ApiEntryPoint):
         return self.query()
 
     def checkEliteServerStatus(self):
-        pass
-        # json = requests.get(url)
+        return self.query()
