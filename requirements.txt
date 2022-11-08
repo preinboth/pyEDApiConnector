@@ -14,5 +14,5 @@ idna~=2.6
 urllib3~=1.26.12
 chardet~=3.0.4
 pyparsing~=2.4.7
-packaging~=20.9
+packaging~=21.3
 zipp~=3.10.0
