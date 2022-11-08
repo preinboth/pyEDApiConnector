@@ -170,16 +170,32 @@ class EdsmCntl():
     ########################################
     ##               Cube                 ##
     ########################################
-    def getSystemsCube(self, systemName, coords, size):
+    def getSystemsCube(self, systemName, size):
         """
-        Get systems in a cube
+        Get systems in a cube by a system name which will be the center of the sphere.
 
         :param systemName: The system name which will be the center of the sphere.
         :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
         :param size: Set to the desired size of the cube In ly. Maximum value is 200.
+        :return:  json
         """
+        return cube.getSystemsCubeBySystemName(systemName, size)
 
-        return cube.getSystemsCube(systemName, coords, size)
+    def getSystemsCubeByCoords(self, coords, size):
+        """
+        Get systems in a cube by a coords which will be the center of the sphere.
+
+        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
+                      Format Coords:
+                      coords = {
+                            'x': 0,
+                            'y': 0,
+                            'z': 0,
+                            }
+        :param size: Set to the desired size of the cube In ly. Maximum value is 200.
+        :return:  json
+        """
+        return cube.getSystemsCubeByCoords(coords, size)
 
     ########################################
     ##             Sphere                 ##
