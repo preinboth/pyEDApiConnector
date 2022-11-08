@@ -4,9 +4,13 @@ from connector import base as exception
 
 
 class ApiEntryPoint:
+    """
+    Parent class for all API endpoints.
+    """
     url_edsm = "https://www.edsm.net/api-"
     url_eddb = "https://eddb.io/archive/v6/"
     url_bgs = "https://elitebgs.app/api/ebgs/v5/"
+    url_spansh = "https://www.spansh.co.uk/api/"
 
     def __init__(self):
         pass

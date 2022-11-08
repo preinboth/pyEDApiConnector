@@ -1,6 +1,8 @@
 # pyED-Api-Connector
-![example workflow](https://github.com/preinboth/pyED-Api-Connector/actions/workflows/tests.yaml/badge.svg)
+
+![Tests](https://github.com/preinboth/pyED-Api-Connector/actions/workflows/tests.yaml/badge.svg)
+![GitHub issues by-label](https://img.shields.io/github/issues-raw/preinboth/pyED-Api-Connector/bug?label=open%20Bugs&logoColor=red)
 
 in progress
 
-[implemented_Api](implemented_Api.md) 
+[Api implemented so far](implementedApi.md) 
