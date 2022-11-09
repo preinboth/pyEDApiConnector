@@ -1,10 +1,14 @@
 from connector.edsm.cubeApi import cube
+from connector.edsm.deathsApi import deaths
 from connector.edsm.sphereApi import sphere
 from connector.edsm.statusApi import server_status
 from connector.edsm.systemApi import Bodies
 from connector.edsm.systemsApi import System, Systems
 from connector.edsm.trafficApi import traffic
+
 from connector.edsm.statusApi import server_status
+
+from connector.edsm.marketApi import market
 
 class EdsmCntl():
     # TODO: Documentation
@@ -153,6 +157,23 @@ class EdsmCntl():
     ########################################
     ##               Deaths               ##
     ########################################
+    def getSystemDeathsBySystemName(self, systemName):
+        """
+        Get information about deaths in a system by SystemName
+
+        :param systemName: The system name
+        :return: json
+        """
+        return deaths.getSystemDeathsBySystemName(systemName)
+
+    def getSystemDeathsBySystemId(self, systemId):
+        """
+        Get information about deaths in a system by SystemId
+
+        :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
+        :return: json
+        """
+        return deaths.getSystemDeathsBySystemId(systemId)
 
     ########################################
     ##              Factions              ##
@@ -169,6 +190,25 @@ class EdsmCntl():
     ########################################
     ##              Market                ##
     ########################################
+    def getMarketByName(self, systemName, stationName):
+        """
+        Get information about market in a station by name
+
+        :param systemName: The system name
+        :param stationName: The station name inside the system.
+        :return: json
+        """
+        return market.getMarketByName(systemName, stationName)
+
+    def getMarketById(self, systemId, marketId):
+        """
+        Get information about market in a station by id
+
+        :param systemId: The system ID
+        :param marketId: The game marketId
+        :return: json
+        """
+        return market.getMarketById(systemId, marketId)
 
     ########################################
     ##            Outfitting              ##
@@ -181,30 +221,63 @@ class EdsmCntl():
     ########################################
     ##               Cube                 ##
     ########################################
-    def getSystemsCube(self, systemName, coords, size):
+    def getSystemsCube(self, systemName, size):
         """
-        Get systems in a cube
+        Get systems in a cube by a system name which will be the center of the sphere.
 
         :param systemName: The system name which will be the center of the sphere.
         :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
         :param size: Set to the desired size of the cube In ly. Maximum value is 200.
+        :return:  json
         """
+        return cube.getSystemsCubeBySystemName(systemName, size)
 
-        return cube.getSystemsCube(systemName, coords, size)
+    def getSystemsCubeByCoords(self, coords, size):
+        """
+        Get systems in a cube by a coords which will be the center of the sphere.
+
+        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
+                      Format Coords:
+                      coords = {
+                            'x': 0,
+                            'y': 0,
+                            'z': 0,
+                            }
+        :param size: Set to the desired size of the cube In ly. Maximum value is 200.
+        :return:  json
+        """
+        return cube.getSystemsCubeByCoords(coords, size)
 
     ########################################
     ##             Sphere                 ##
     ########################################
-    def getSystemsSphere(self, systemName, coords, minradius, radius):
+    def getSystemsSphereBySystemName(self, systemName, minradius, radius):
         """
         Get systems in a sphere radius
 
         :param systemName: The system name which will be the center of the sphere.
-        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
         :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
         :param radius: Set to the desired radius In ly. Maximum value is 100.
+        :return:  json
         """
-        return sphere.getSystemsSphere(systemName, coords, minradius, radius)
+        return sphere.getSystemsSphereBySystemName(systemName, minradius, radius)
+
+    def getSystemsSphereByCoords(cls, coords, minradius, radius):
+        """
+        Get systems in a sphere radius
+
+        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
+                      Format Coords:
+                      coords = {
+                            'x': 0,
+                            'y': 0,
+                            'z': 0,
+                            }
+        :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
+        :param radius: Set to the desired radius In ly. Maximum value is 100.
+        :return:  json
+        """
+        return sphere.getSystemsSphereByCoords(coords, minradius, radius)
 
     ########################################
     ##               Traffic              ##
