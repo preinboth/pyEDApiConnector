@@ -1,4 +1,5 @@
 from connector.edsm.cubeApi import cube
+from connector.edsm.marketApi import market
 from connector.edsm.sphereApi import sphere
 from connector.edsm.statusApi import server_status
 from connector.edsm.systemApi import Bodies
@@ -158,6 +159,25 @@ class EdsmCntl():
     ########################################
     ##              Market                ##
     ########################################
+    def getMarketByName(self, systemName, stationName):
+        """
+        Get information about market in a station by name
+
+        :param systemName: The system name
+        :param stationName: The station name inside the system.
+        :return: json
+        """
+        return market.getMarketByName(systemName, stationName)
+
+    def getMarketById(self, systemId, marketId):
+        """
+        Get information about market in a station by id
+
+        :param systemId: The system ID
+        :param marketId: The game marketId
+        :return: json
+        """
+        return market.getMarketById(systemId, marketId)
 
     ########################################
     ##            Outfitting              ##
