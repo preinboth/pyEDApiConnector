@@ -1,4 +1,5 @@
 from connector.edsm.cubeApi import cube
+from connector.edsm.deathsApi import deaths
 from connector.edsm.sphereApi import sphere
 from connector.edsm.statusApi import server_status
 from connector.edsm.systemApi import Bodies
@@ -142,6 +143,23 @@ class EdsmCntl():
     ########################################
     ##               Deaths               ##
     ########################################
+    def getSystemDeathsBySystemName(self, systemName):
+        """
+        Get information about deaths in a system by SystemName
+
+        :param systemName: The system name
+        :return: json
+        """
+        return deaths.getSystemDeathsBySystemName(systemName)
+
+    def getSystemDeathsBySystemId(self, systemId):
+        """
+        Get information about deaths in a system by SystemId
+
+        :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
+        :return: json
+        """
+        return deaths.getSystemDeathsBySystemId(systemId)
 
     ########################################
     ##              Factions              ##
