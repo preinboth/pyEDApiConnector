@@ -14,6 +14,7 @@ class Bodies(ApiEntryPoint):
     def query(cls, params):
         """
         Build the query for call of the api
+
         :param params:
         :return:
         """
@@ -27,7 +28,7 @@ class Bodies(ApiEntryPoint):
         """
         get Bodies for a systemname
 
-        :param systemName: Use the systemName parameter to filter flight logs by system name.
+        :param systemName: Name of a system
         :return: bodies in json
         """
         json = cls.query({'systemName': systemName})
@@ -37,7 +38,7 @@ class Bodies(ApiEntryPoint):
         """
         get Bodies for a systemId
 
-        :param systemId: By passing directly our intenral ID, you can override the system name.
+        :param systemId: internal ID of a system
         :return: bodies in json
         """
         json = cls.query({'systemId': str(systemId)})
@@ -70,7 +71,7 @@ class ScanValues(ApiEntryPoint):
         """
         Get estimated scan values of a system by a systemname
 
-        :param systemName: Use the systemName parameter to filter flight logs by system name.
+        :param systemName: Name of a system
         :return: json
         """
         json = cls.query({'systemName': systemName})
@@ -80,7 +81,7 @@ class ScanValues(ApiEntryPoint):
         """
         Get estimated scan values of a system by a systemId
 
-        :param systemId: By passing directly our intenral ID, you can override the system name.
+        :param systemId: internal ID of a system
         :return: json
         """
         json = cls.query({'systemId': str(systemId)})

@@ -43,29 +43,29 @@ class System(ApiEntryPoint):
         """
         get SystemId by a Systemname
 
-        :param systemName: Use the systemName parameter to filter flight logs by system name.
+        :param systemName: Name of a system
         :return: json
         """
         json = cls.query({'systemName': systemName,
                           'showId': 1})
         return json
 
-    def getCoordinates(cls, systemName):
+    def getCoordinates_by_systemname(cls, systemName):
         """
         get Coordinates by a Systemname
 
-        :param systemName: Use the systemName parameter to filter flight logs by system name.
+        :param systemName: Name of a system
         :return: json
         """
         json = cls.query({'systemName': systemName,
-                          'showPermit': 1})
+                          'showCoordinates': 1})
         return json
 
     def getPermit(cls, systemName):
         """
         get Permit by a Systemname
 
-        :param systemName: Use the systemName parameter to filter flight logs by system name.
+        :param systemName: Name of a system
         :return:  json
         """
         json = cls.query({'systemName': systemName,
@@ -76,7 +76,7 @@ class System(ApiEntryPoint):
         """
         get information by a systemname
 
-        :param systemName: Use the systemName parameter to filter flight logs by system name.
+        :param systemName: Name of a system
         :return:  json
         """
         json = cls.query({'systemName': systemName,
@@ -85,9 +85,9 @@ class System(ApiEntryPoint):
 
     def getPrimaryStar(cls, systemName):
         """
-        get the prtimarystar by a systemname
+        get the primarystar by a systemname
 
-        :param systemName: Use the systemName parameter to filter flight logs by system name.
+        :param systemName: Name of a system
         :return:  json
         """
         json = cls.query({'systemName': systemName,
@@ -138,7 +138,7 @@ class Systems(ApiEntryPoint):
 
         return cls.query(parameters)
 
-    def getCoordinates(cls, *systemName):
+    def getCoordinates_by_SystemList(cls, *systemName):
         parameters = {'showCoordinates': 1}
 
         if len(systemName) == 1:
