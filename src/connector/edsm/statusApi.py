@@ -11,6 +11,7 @@ class ServerStatus(ApiEntryPoint):
     def query(cls, params):
         """
         Build the query for call of the api
+
         :param params:
         :return:
         """
@@ -20,14 +21,12 @@ class ServerStatus(ApiEntryPoint):
             raise exception.SystemNotFoundError(params)
         return json
 
-    def getEliteServerStatus(self):
+    def getEliteServerStatus(cls):
         """
         getEliteServerStatus
 
-        :return: jeson
+        :return: json
         """
-        return self.query()
-
-
+        return cls.query()
 # --------------------------------------
 server_status = ServerStatus()
