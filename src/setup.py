@@ -1,9 +1,10 @@
 from setuptools import setup
 
 setup(
-    name='pyED-Api-Connector',
-    version='0.0.1',
-    packages=['connector', 'connector.base', 'connector.edsm'],
+    name='py_ED-Api-Connector',
+    version='v0.0.1',
+    packages=['utils', 'connector', 'connector.base', 'connector.base.edLogger', 'connector.eddb', 'connector.edsm',
+              'connector.spansh', 'eddb', 'edsm', 'spansh'],
     package_dir={'': 'src'},
     url='https://github.com/preinboth/pyED-Api-Connector',
     license='MIT',
