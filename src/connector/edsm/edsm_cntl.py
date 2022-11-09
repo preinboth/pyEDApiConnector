@@ -4,7 +4,7 @@ from connector.edsm.statusApi import server_status
 from connector.edsm.systemApi import Bodies
 from connector.edsm.systemsApi import System, Systems
 from connector.edsm.trafficApi import traffic
-
+from connector.edsm.statusApi import server_status
 
 class EdsmCntl():
     # TODO: Documentation
@@ -15,6 +15,17 @@ class EdsmCntl():
 
     def __init__(self):
         pass
+
+    ########################################
+    ##               Status               ##
+    ########################################
+    def getEliteServerStatus(self):
+        """
+        getEliteServerStatus
+
+        :return: json
+        """
+        return server_status.getEliteServerStatus()
 
     ########################################
     ##           System/Systems           ##
