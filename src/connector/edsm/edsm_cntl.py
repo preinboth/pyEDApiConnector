@@ -1,5 +1,6 @@
 from connector.edsm.cubeApi import cube
 from connector.edsm.marketApi import market
+from connector.edsm.deathsApi import deaths
 from connector.edsm.sphereApi import sphere
 from connector.edsm.statusApi import server_status
 from connector.edsm.systemApi import Bodies
