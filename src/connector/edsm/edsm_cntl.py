@@ -2,15 +2,13 @@ from connector.edsm.cubeApi import cube
 from connector.edsm.sphereApi import sphere
 from connector.edsm.statusApi import server_status
 from connector.edsm.systemApi import Bodies
-from connector.edsm.systemsApi import System, Systems
+from connector.edsm.systemsApi import system, systems
 from connector.edsm.trafficApi import traffic
 
 
 class EdsmCntl():
     # TODO: Documentation
     # TODO: Implementation
-    __edsm_system = System()
-    __edsm_systems = Systems()
     __edsm_bodies = Bodies()
 
     def __init__(self):
@@ -26,7 +24,7 @@ class EdsmCntl():
         :param systemName: Name of a system
         :return: json
         """
-        return self.__edsm_system.getSystem(systemName)
+        return system.getSystem(systemName)
 
     def getSystems(self, *systemName):
         """
@@ -35,7 +33,7 @@ class EdsmCntl():
         :param systemName: List of system names
         :return:  json
         """
-        return self.__edsm_systems.getSystems(*systemName)
+        return systems.getSystems(*systemName)
 
     def getSystemId(self, systemName):
         """
@@ -44,7 +42,7 @@ class EdsmCntl():
         :param systemName: Name of a system
         :return: json
         """
-        return self.__edsm_system.getIds(systemName)
+        return system.getIds(systemName)
 
     def getSystemsIds(self, *systemName):
         """
@@ -53,7 +51,7 @@ class EdsmCntl():
         :param systemName: List of system names
         :return:  json:
         """
-        return self.__edsm_systems.getIds(*systemName)
+        return systems.getIds(*systemName)
 
     def getSystemCoordinate(self, systemName):
         """
@@ -62,7 +60,7 @@ class EdsmCntl():
         :param systemName: Name of a system
         :return: json
         """
-        return self.__edsm_system.getCoordinates_by_systemname(systemName)
+        return system.getCoordinatesBySystemname(systemName)
 
     def getSystemsCoordinates(self, *systemName):
         """
@@ -71,7 +69,7 @@ class EdsmCntl():
         :param systemName: List of system names
         :return:  json:
         """
-        return self.__edsm_systems.getCoordinates_by_SystemList(*systemName)
+        return systems.getCoordinates_by_SystemList(*systemName)
 
     def getSystemPermit(self, systemName):
         """
@@ -80,7 +78,7 @@ class EdsmCntl():
         :param systemName: Name of a system
         :return:  json
         """
-        return self.__edsm_system.getPermit(systemName)
+        return system.getPermit(systemName)
 
     def getSystemsPermit(self, *systemName):
         """
@@ -89,7 +87,7 @@ class EdsmCntl():
         :param systemName: List of system names
         :return:  json:
         """
-        return self.__edsm_systems.getPermit(*systemName)
+        return systems.getPermit(*systemName)
 
     def getSystemInformation(self, systemName):
         """
@@ -98,7 +96,7 @@ class EdsmCntl():
         :param systemName: Name of a system
         :return:  json
         """
-        return self.__edsm_system.getInformation(systemName)
+        return system.getInformation(systemName)
 
     def getSystemsInformation(self, *systemName):
         """
@@ -107,7 +105,7 @@ class EdsmCntl():
         :param systemName: List of system names
         :return:  json:
         """
-        return self.__edsm_systems.getInformation(*systemName)
+        return systems.getInformation(*systemName)
 
     def getSystemPrimaryStar(self, systemName):
         """
@@ -116,10 +114,10 @@ class EdsmCntl():
         :param systemName: Name of a system
         :return:  json
         """
-        return self.__edsm_system.getPrimaryStar(systemName)
+        return system.getPrimaryStar(systemName)
 
     def getSystemsPrimaryStar(self, *systemName):
-        return self.__edsm_systems.getPrimaryStar(*systemName)
+        return systems.getPrimaryStar(*systemName)
 
     #### Bodies ####
     def getBodies(self, systemName):
