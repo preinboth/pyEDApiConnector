@@ -110,22 +110,36 @@ class Station(ApiEntryPoint):
             raise exception.SystemNotFoundError(params)
         return json
 
-    def getStation(cls, systemName):
+    def getStation(cls, *systemName):
         """
-        Get information about stations in a system by a systemname
+        Get information about stations in a system by systemname
 
         :param systemName: Use the systemName parameter to filter flight logs by system name.
         :return: json
         """
+        parameters = {}
+        if len(systemName) == 1:
+            parameters['systemName'] = systemName[0]
+        else:
+            parameters['systemName[]'] = list(systemName)
+
         json = cls.query({'systemName': systemName})
         return json
 
-    def getStationById(cls, systemId):
+    def getStationById(cls, *systemId):
         """
-        Get information about stations in a system by a systemId
+        Get information about stations in a system by systemId
 
         :param systemId: By passing directly our intenral ID, you can override the system name.
         :return: json
         """
+        parameters = {}
+        if len(systemId) == 1:
+            parameters['systemId'] = systemId[0]
+        else:
+            parameters['systemId[]'] = list(systemId)
+
+        json = cls.query({'systemName': systemId})
+
         json = cls.query({'systemId': str(systemId)})
         return json
