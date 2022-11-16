@@ -66,7 +66,6 @@ class ScanValues(ApiEntryPoint):
         except exception.NotFoundError:
             raise exception.SystemNotFoundError(params)
         return json
-
     def getEstimatedValue(cls, systemName):
         """
         Get estimated scan values of a system by a systemname
@@ -117,7 +116,13 @@ class Station(ApiEntryPoint):
         :param systemName: Use the systemName parameter to filter flight logs by system name.
         :return: json
         """
-        json = cls.query({'systemName': systemName})
+        parameters = {}
+        parameters['systemName'] = systemName
+        # if len(systemName) == 1:
+        #     parameters['systemName'] = systemName[0]
+        # else:
+        #     parameters['systemName[]'] = list(systemName)
+        json = cls.query(parameters)
         return json
 
     def getStationById(cls, systemId):
@@ -127,5 +132,15 @@ class Station(ApiEntryPoint):
         :param systemId: By passing directly our intenral ID, you can override the system name.
         :return: json
         """
-        json = cls.query({'systemId': str(systemId)})
+        parameters = {'systemId': int(systemId)}
+        # if len(systemId) == 1:
+        # else:
+        # parameters['systemId[]'] = list(systemId)
+
+        json = cls.query(parameters)
         return json
+
+
+station = Station()
+scan_values = ScanValues()
+bodies = Bodies()
