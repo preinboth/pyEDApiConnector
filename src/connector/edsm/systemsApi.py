@@ -50,7 +50,7 @@ class System(ApiEntryPoint):
                           'showId': 1})
         return json
 
-    def getCoordinates_by_systemname(cls, systemName):
+    def getCoordinatesBySystemname(cls, systemName):
         """
         get Coordinates by a Systemname
 
@@ -175,3 +175,7 @@ class Systems(ApiEntryPoint):
             parameters['systemName[]'] = list(systemName)
 
         return cls.query(parameters)
+
+# -------------------
+system = System()
+systems = Systems()
