@@ -115,20 +115,24 @@ class Systems(ApiEntryPoint):
         return json
 
     def getSystems(cls, *systemName):
+        """
+        Get information about systems
+
+        :param systemName: Name of a system(s)
+        :return: json
+        """
         parameters = {'showId': 1,
                       'showCoordinates': 1,
                       'showPermit': 1,
                       'showInformation': 1,
                       'showPrimaryStar': 1}
-
         if len(systemName) == 1:
             parameters['systemName'] = systemName[0]
         else:
             parameters['systemName[]'] = list(systemName)
-
         return cls.query(parameters)
 
-    def getIds(cls, *systemName):
+    def getSystemIds(cls, *systemName):
         parameters = {'showId': 1}
 
         if len(systemName) == 1:
@@ -175,6 +179,7 @@ class Systems(ApiEntryPoint):
             parameters['systemName[]'] = list(systemName)
 
         return cls.query(parameters)
+
 
 # -------------------
 system = System()
