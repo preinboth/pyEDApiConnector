@@ -1,4 +1,5 @@
 from connector.edsm.systemApi import station
+from connector.edsm.systemApi import bodies
 
 class EdsmCntl():
     # TODO: Documentation
@@ -25,5 +26,22 @@ class EdsmCntl():
         """
         return station.getStationById(systemId)
 
+    def getBodies(self, systemName):
+        """
+        get Bodies for a systemname
+
+        :param systemName: Name of a system
+        :return: bodies in json
+        """
+        return bodies.getBodies(systemName)
+
+    def getBodiesById(self, systemId):
+        """
+        get Bodies for a systemId
+
+        :param systemId: internal ID of a system
+        :return: bodies in json
+        """
+        return bodies.getBodiesById(systemId)
 # ------------------------
 edsmCntl = EdsmCntl()
