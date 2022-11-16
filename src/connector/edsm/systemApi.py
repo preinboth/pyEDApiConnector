@@ -66,7 +66,6 @@ class ScanValues(ApiEntryPoint):
         except exception.NotFoundError:
             raise exception.SystemNotFoundError(params)
         return json
-
     def getEstimatedValue(cls, systemName):
         """
         Get estimated scan values of a system by a systemname
