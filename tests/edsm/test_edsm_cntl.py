@@ -88,6 +88,18 @@ class EdsmApiTests(unittest.TestCase):
         self.assertEqual(None, planet['orbitalEccentricity'])
         self.assertFalse(planet['rotationalPeriodTidallyLocked'])
 
+    def test_get_estimated_value(self):
+        json = edsmCntl.getEstimatedValue("Sol")
+        # system data
+        self.assertEqual(27, json['id'])
+        self.assertEqual("Sol", json['name'])
+
+    def test_get_estimated_value_by_id(self):
+        json = edsmCntl.getEstimatedValueById(27)
+        # system data
+        self.assertEqual(27, json['id'])
+        self.assertEqual("Sol", json['name'])
+
 
 if __name__ == '__main__':
     unittest.main()
