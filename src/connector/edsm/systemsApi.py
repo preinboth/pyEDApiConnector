@@ -132,54 +132,6 @@ class Systems(ApiEntryPoint):
             parameters['systemName[]'] = list(systemName)
         return cls.query(parameters)
 
-    def getSystemIds(cls, *systemName):
-        parameters = {'showId': 1}
-
-        if len(systemName) == 1:
-            parameters['systemName'] = systemName[0]
-        else:
-            parameters['systemName[]'] = list(systemName)
-
-        return cls.query(parameters)
-
-    def getCoordinates_by_SystemList(cls, *systemName):
-        parameters = {'showCoordinates': 1}
-
-        if len(systemName) == 1:
-            parameters['systemName'] = systemName[0]
-        else:
-            parameters['systemName[]'] = list(systemName)
-
-        return cls.query(parameters)
-
-    def getPermit(cls, *systemName):
-        parameters = {'showPermit': 1}
-        if len(systemName) == 1:
-            parameters['systemName'] = systemName[0]
-        else:
-            parameters['systemName[]'] = list(systemName)
-        return cls.query(parameters)
-
-    def getInformation(cls, *systemName):
-        parameters = {'showInformation': 1}
-
-        if len(systemName) == 1:
-            parameters['systemName'] = systemName[0]
-        else:
-            parameters['systemName[]'] = list(systemName)
-
-        return cls.query(parameters)
-
-    def getPrimaryStar(cls, *systemName):
-        parameters = {'showPrimaryStar': 1}
-
-        if len(systemName) == 1:
-            parameters['systemName'] = systemName[0]
-        else:
-            parameters['systemName[]'] = list(systemName)
-
-        return cls.query(parameters)
-
 
 # -------------------
 system = System()
