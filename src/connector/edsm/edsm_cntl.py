@@ -2,7 +2,7 @@ from connector.edsm.systemApi import station
 from connector.edsm.systemApi import bodies
 from connector.edsm.systemApi import scan_values
 from connector.edsm.systemsApi import systems
-
+from connector.edsm.cubeApi import cube
 
 class EdsmCntl():
     # TODO: Documentation
@@ -78,6 +78,30 @@ class EdsmCntl():
         """
         return systems.getSystems(*systemName)
 
+    # Get systems in a cube
+    def getSystemsCubeBySystemName(self, systemName, size):
+        """
+        Get systems in a cube by a system name which will be the center of the sphere.
 
+        :param systemName: The system name which will be the center of the sphere.
+        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
+        :param size: Set to the desired size of the cube In ly. Maximum value is 200.
+        """
+        return cube.getSystemsCubeBySystemName(systemName, size)
+
+    def getSystemsCubeByCoords(self, coords, size):
+        """
+        Get systems in a cube by a coords which will be the center of the sphere.
+
+        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
+                      Format Coords:
+                      coords = {
+                            'x': 0,
+                            'y': 0,
+                            'z': 0,
+                            }
+        :param size: Set to the desired size of the cube In ly. Maximum value is 200.
+        """
+        return cube.getSystemsCubeByCoords(coords, size)
 # ------------------------
 edsmCntl = EdsmCntl()
