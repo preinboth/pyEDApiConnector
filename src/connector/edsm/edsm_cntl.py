@@ -1,5 +1,6 @@
 from connector.edsm.systemApi import station
 from connector.edsm.systemApi import bodies
+from connector.edsm.systemApi import scan_values
 
 class EdsmCntl():
     # TODO: Documentation
@@ -8,6 +9,7 @@ class EdsmCntl():
     def __init__(self):
         pass
 
+    # Get information about stations in a system
     def getStation(self, systemName):
         """
         Get information about stations in a system by a systemname
@@ -26,6 +28,7 @@ class EdsmCntl():
         """
         return station.getStationById(systemId)
 
+    # Get information about celestial bodies in a system
     def getBodies(self, systemName):
         """
         get Bodies for a systemname
@@ -43,5 +46,26 @@ class EdsmCntl():
         :return: bodies in json
         """
         return bodies.getBodiesById(systemId)
+
+    # Get estimated scan values of a system
+    def getEstimatedValue(self, systemName):
+        """
+        Get estimated scan values of a system by a systemname
+
+        :param systemName: Name of a system
+        :return: json
+        """
+        return scan_values.getEstimatedValue(systemName)
+
+    def getEstimatedValueById(self, systemId):
+        """
+        Get estimated scan values of a system by a systemId
+
+        :param systemId: internal ID of a system
+        :return: json
+        """
+        return scan_values.getEstimatedValueById(systemId)
+
+
 # ------------------------
 edsmCntl = EdsmCntl()
