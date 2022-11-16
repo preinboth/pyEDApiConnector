@@ -1,6 +1,8 @@
 from connector.edsm.systemApi import station
 from connector.edsm.systemApi import bodies
 from connector.edsm.systemApi import scan_values
+from connector.edsm.systemsApi import systems
+
 
 class EdsmCntl():
     # TODO: Documentation
@@ -65,6 +67,16 @@ class EdsmCntl():
         :return: json
         """
         return scan_values.getEstimatedValueById(systemId)
+
+    # Get information about systems
+    def getSystems(self, *systemName):
+        """
+        Get information about systems
+
+        :param systemName: Name of a system(s)
+        :return: json
+        """
+        return systems.getSystems(*systemName)
 
 
 # ------------------------
