@@ -1,6 +1,7 @@
 from connector.base import exception
 from connector.base.base import ApiEntryPoint
 
+
 class Systems(ApiEntryPoint):
     """
     get Information for Systems
@@ -37,6 +38,7 @@ class Systems(ApiEntryPoint):
         else:
             parameters['systemName[]'] = list(systemName)
         return cls.query(parameters)
+
 
 # -------------------
 
