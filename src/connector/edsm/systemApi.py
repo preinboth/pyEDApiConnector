@@ -123,8 +123,6 @@ class Station(ApiEntryPoint):
         #     parameters['systemName'] = systemName[0]
         # else:
         #     parameters['systemName[]'] = list(systemName)
-
-        # json = cls.query({'systemName': systemName})
         json = cls.query(parameters)
         return json
 
