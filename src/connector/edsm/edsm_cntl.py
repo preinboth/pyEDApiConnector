@@ -3,6 +3,8 @@ from connector.edsm.systemApi import bodies
 from connector.edsm.systemApi import scan_values
 from connector.edsm.systemsApi import systems
 from connector.edsm.cubeApi import cube
+from connector.edsm.sphereApi import sphere
+
 
 class EdsmCntl():
     # TODO: Documentation
@@ -103,5 +105,33 @@ class EdsmCntl():
         :param size: Set to the desired size of the cube In ly. Maximum value is 200.
         """
         return cube.getSystemsCubeByCoords(coords, size)
+
+    def getSystemsSphereBySystemName(self, systemName, minradius=0, radius=0):
+        """
+        Get systems in a sphere radius
+
+        :param systemName: The system name which will be the center of the sphere.
+        :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
+        :param radius: Set to the desired radius In ly. Maximum value is 100.
+        """
+        return sphere.getSystemsSphereBySystemName(systemName, minradius, radius)
+
+    def getSystemsSphereByCoords(cls, coords, minradius=0, radius=0):
+        """
+        Get systems in a sphere radius
+
+        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
+                      Format Coords:
+                      coords = {
+                            'x': 0,
+                            'y': 0,
+                            'z': 0,
+                            }
+        :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
+        :param radius: Set to the desired radius In ly. Maximum value is 100.
+        """
+        return sphere.getSystemsSphereByCoords(coords, minradius, radius)
+
+
 # ------------------------
 edsmCntl = EdsmCntl()
