@@ -1,8 +1,9 @@
 from connector.edsm.marketApi import market
+from connector.edsm.statusApi import server_status
 from connector.edsm.systemApi import bodies
 from connector.edsm.systemApi import scan_values
 from connector.edsm.systemApi import station
-from connector.edsm.statusApi import server_status
+from connector.edsm.shipyardApi import shipyard
 
 
 class EdsmCntl():
@@ -96,6 +97,26 @@ class EdsmCntl():
         :return: json
         """
         return server_status.getEliteServerStatus()
+
+    def getShipyard(self, systemName, stationName):
+        """
+        Get information about shipyard in a station by name
+
+        :param systemName: The system name
+        :param stationName: The station name inside the system.
+        :return: json
+        """
+        return shipyard.getShipyard(systemName, stationName)
+
+    def getShipyardById(self, systemId, marketId):
+        """
+        Get information about shipyard in a station by id
+
+        :param systemId: The system ID
+        :param marketId: The game marketId
+        :return: json
+        """
+        return shipyard.getShipyardById(systemId, marketId)
 
 
 # ------------------------
