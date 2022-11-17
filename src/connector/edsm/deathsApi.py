@@ -30,8 +30,7 @@ class Deaths(ApiEntryPoint):
         :param systemName: The system name
         :return: json
         """
-        json = cls.query({'systemName': systemName})
-        return json
+        return cls.query({'systemName': systemName})
 
     def getDeathsById(cls, systemId):
         """
@@ -40,8 +39,7 @@ class Deaths(ApiEntryPoint):
         :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
         :return: json
         """
-        json = cls.query({'systemId': systemId})
-        return json
+        return cls.query({'systemId': systemId})
 
 
 # -------------------
