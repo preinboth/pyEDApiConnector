@@ -1,4 +1,8 @@
 from connector.edsm.bodiesApi import bodies
+from connector.edsm.cmdrCreaditsApi import cmdrCredits
+from connector.edsm.cmdrMaterialsApi import cmdrMaterials
+from connector.edsm.cmdrRanksApi import cmdrRanks
+from connector.edsm.deathsApi import deaths
 from connector.edsm.factionsApi import factions
 from connector.edsm.marketApi import market
 from connector.edsm.scanValuesApi import scan_values
@@ -6,7 +10,6 @@ from connector.edsm.shipyardApi import shipyard
 from connector.edsm.stationApi import station
 from connector.edsm.statusApi import server_status
 from connector.edsm.trafficApi import traffic
-from connector.edsm.deathsApi import deaths
 
 
 class EdsmCntl():
@@ -150,7 +153,7 @@ class EdsmCntl():
         """
         return traffic.getTrafficSystem(systemName)
 
-    def getTrafficById(cls, systemId):
+    def getTrafficById(self, systemId):
         """
         Get information about traffic in a system by a systemId
 
@@ -159,7 +162,7 @@ class EdsmCntl():
         """
         return traffic.getTrafficById(systemId)
 
-    def getDeaths(cls, systemName):
+    def getDeaths(self, systemName):
         """
         Get information about deaths in a system by SystemName
 
@@ -168,7 +171,7 @@ class EdsmCntl():
         """
         return deaths.getDeaths(systemName)
 
-    def getDeathsById(cls, systemId):
+    def getDeathsById(self, systemId):
         """
         Get information about deaths in a system by SystemId
 
@@ -176,5 +179,37 @@ class EdsmCntl():
         :return: json
         """
         return deaths.getDeathsById(systemId)
+
+    def getCmdrRanks(self, cmdrname, api_key):
+        """
+        Get commander ranks by CmdrName and APiKey
+
+        :param cmdrname: The name of the commander as registered on EDSM.
+        :param api_key: The API Key associate the commander name with his account.
+        :return: json
+        """
+        return cmdrRanks.getCmdrRanks(cmdrname, api_key)
+
+    def getCmdrCredits(cls, cmdrname, api_key):
+        """
+        Get commander credits by CmdrName and APiKey
+
+        :param cmdrname: The name of the commander as registered on EDSM.
+        :param api_key: The API Key associate the commander name with his account.
+        :return: json
+        """
+        return cmdrCredits.getCmdrCredits(cmdrname, api_key)
+
+    def getCmdrMaterials(cls, cmdrname, api_key):
+        """
+        Get commander materials/encoded data/cargo
+
+        :param cmdrname: The name of the commander as registered on EDSM.
+        :param api_key: The API Key associate the commander name with his account.
+        :return: json
+        """
+        return cmdrMaterials.getCmdrMaterials(cmdrname, api_key)
+
+
 # ------------------------
 edsmCntl = EdsmCntl()
