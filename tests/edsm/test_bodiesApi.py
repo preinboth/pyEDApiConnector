@@ -1,6 +1,6 @@
 import unittest
 
-from src.connector.edsm.systemApi import bodies
+from src.connector.edsm.bodiesApi import bodies
 
 
 class test_systemApiBodies(unittest.TestCase):

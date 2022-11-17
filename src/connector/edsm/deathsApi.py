@@ -23,25 +23,23 @@ class Deaths(ApiEntryPoint):
             raise exception.SystemNotFoundError(params)
         return json
 
-    def getSystemDeathsBySystemName(cls, systemName):
+    def getDeaths(cls, systemName):
         """
         Get information about deaths in a system by SystemName
 
         :param systemName: The system name
         :return: json
         """
-        json = cls.query({'systemName': systemName})
-        return json
+        return cls.query({'systemName': systemName})
 
-    def getSystemDeathsBySystemId(cls, systemId):
+    def getDeathsById(cls, systemId):
         """
         Get information about deaths in a system by SystemId
 
         :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
         :return: json
         """
-        json = cls.query({'systemId': systemId})
-        return json
+        return cls.query({'systemId': systemId})
 
 
 # -------------------

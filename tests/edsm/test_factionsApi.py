@@ -1,11 +1,11 @@
 import unittest
 
-from connector.edsm.deathsApi import deaths
+from src.connector.edsm.factionsApi import factions
 
 
-class TestEdsmDeaths(unittest.TestCase):
-    def test_get_Deaths(self):
-        json = deaths.getDeaths("Gacrux")
+class TestEdsmFactions(unittest.TestCase):
+    def test_get_faction(self):
+        json = factions.getFaction("Gacrux", 1)
         if not json:
             self.fail("Not Data found")
         # System
@@ -13,8 +13,8 @@ class TestEdsmDeaths(unittest.TestCase):
         assert json['id64'] == 672028239289
         assert json['name'] == 'Gacrux'
 
-    def test_get_Deaths_By_Id(self):
-        json = deaths.getDeathsById(7564)
+    def test_get_faction_by_id(self):
+        json = factions.getFactionById(7564, 1)
         if not json:
             self.fail("Not Data found")
         # System

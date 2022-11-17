@@ -41,5 +41,4 @@ class Systems(ApiEntryPoint):
 
 
 # -------------------
-
 systems = Systems()
