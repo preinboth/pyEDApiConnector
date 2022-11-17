@@ -100,58 +100,34 @@ class EdsmApiTests(unittest.TestCase):
         self.assertEqual(27, json['id'])
         self.assertEqual("Sol", json['name'])
 
-    def test_getSystems(self):
-        json = edsmCntl.getSystems("Gacrux", "Achali")
-
-        # System Achali
-        system = json[0]
-        self.assertEqual("Achali", system['name'])
-        self.assertEqual(4532, system['id'])
-        self.assertEqual(3657332462314, system['id64'])
-        self.assertFalse(system['requirePermit'])
-        self.assertTrue(system['information'])
-
-        self.assertEqual("K (Yellow-Orange) Star", system['primaryStar']['type'])
-        self.assertEqual("Achali", system['primaryStar']['name'])
-        self.assertTrue(system['primaryStar']['isScoopable'])
-
-        # System Gacrux
-        system = json[1]
-        self.assertEqual("Gacrux", system['name'])
-        self.assertEqual(7564, system['id'])
-        self.assertEqual(672028239289, system['id64'])
-        self.assertFalse(system['requirePermit'])
-        self.assertTrue(system['information'])
-
-        self.assertEqual("M (Red giant) Star", system['primaryStar']['type'])
-        self.assertEqual("Gacrux", system['primaryStar']['name'])
-        self.assertTrue(system['primaryStar']['isScoopable'])
-
-        # Get systems in a cube
-
-    def test_get_systems_cube_by_system_name(self):
-        json = edsmCntl.getSystemsCubeBySystemName('sol', 20)
+    def test_get_market_by_name(self):
+        json = edsmCntl.getMarketByName('Gacrux', 'Ramanujan Terminal')
         if not json:
             self.fail("Not Data found")
-        system = json[0]
-        self.assertEqual("Groombridge 34", system['name'])
-        self.assertEqual(1410, system['id'])
-        self.assertEqual(7267755828641, system['id64'])
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
 
-    def test_get_systems_cube_by_coords(self):
-        coords = {
-            'x': 0,
-            'y': 0,
-            'z': 0,
-        }
-        json = edsmCntl.getSystemsCubeByCoords(coords, 20)
+        # Market
+        assert json['marketId'] == 3228596736
+        assert json['sId'] == 1644
+        assert json['sName'] == "Ramanujan Terminal"
+
+    def test_get_market_by_id(self):
+        pass
+        json = edsmCntl.getMarketById(7564, 3228596736)
         if not json:
             self.fail("Not Data found")
-        system = json[0]
-        self.assertEqual("Groombridge 34", system['name'])
-        self.assertEqual(1410, system['id'])
-        self.assertEqual(7267755828641, system['id64'])
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
 
+        # Market
+        assert json['marketId'] == 3228596736
+        assert json['sId'] == 1644
+        assert json['sName'] == "Ramanujan Terminal"
 
 if __name__ == '__main__':
     unittest.main()

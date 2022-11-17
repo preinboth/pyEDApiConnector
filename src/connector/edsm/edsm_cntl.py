@@ -1,10 +1,7 @@
 from connector.edsm.systemApi import station
 from connector.edsm.systemApi import bodies
 from connector.edsm.systemApi import scan_values
-from connector.edsm.systemsApi import systems
-from connector.edsm.cubeApi import cube
-from connector.edsm.sphereApi import sphere
-
+from connector.edsm.marketApi import market
 
 class EdsmCntl():
     # TODO: Documentation
@@ -70,68 +67,25 @@ class EdsmCntl():
         """
         return scan_values.getEstimatedValueById(systemId)
 
-    # Get information about systems
-    def getSystems(self, *systemName):
+    def getMarketByName(self, systemName, stationName):
         """
-        Get information about systems
+        Get information about market in a station by name
 
-        :param systemName: Name of a system(s)
+        :param systemName: The system name
+        :param stationName: The station name inside the system.
         :return: json
         """
-        return systems.getSystems(*systemName)
+        return market.getMarketByName(systemName, stationName)
 
-    # Get systems in a cube
-    def getSystemsCubeBySystemName(self, systemName, size):
+    def getMarketById(self, systemId, marketId):
         """
-        Get systems in a cube by a system name which will be the center of the sphere.
+        Get information about market in a station by id
 
-        :param systemName: The system name which will be the center of the sphere.
-        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
-        :param size: Set to the desired size of the cube In ly. Maximum value is 200.
+        :param systemId: The system ID
+        :param marketId: The game marketId
+        :return: json
         """
-        return cube.getSystemsCubeBySystemName(systemName, size)
-
-    def getSystemsCubeByCoords(self, coords, size):
-        """
-        Get systems in a cube by a coords which will be the center of the sphere.
-
-        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
-                      Format Coords:
-                      coords = {
-                            'x': 0,
-                            'y': 0,
-                            'z': 0,
-                            }
-        :param size: Set to the desired size of the cube In ly. Maximum value is 200.
-        """
-        return cube.getSystemsCubeByCoords(coords, size)
-
-    def getSystemsSphereBySystemName(self, systemName, minradius=0, radius=0):
-        """
-        Get systems in a sphere radius
-
-        :param systemName: The system name which will be the center of the sphere.
-        :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
-        :param radius: Set to the desired radius In ly. Maximum value is 100.
-        """
-        return sphere.getSystemsSphereBySystemName(systemName, minradius, radius)
-
-    def getSystemsSphereByCoords(cls, coords, minradius=0, radius=0):
-        """
-        Get systems in a sphere radius
-
-        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
-                      Format Coords:
-                      coords = {
-                            'x': 0,
-                            'y': 0,
-                            'z': 0,
-                            }
-        :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
-        :param radius: Set to the desired radius In ly. Maximum value is 100.
-        """
-        return sphere.getSystemsSphereByCoords(coords, minradius, radius)
-
+        return market.getMarketById(systemId, marketId)
 
 # ------------------------
 edsmCntl = EdsmCntl()
