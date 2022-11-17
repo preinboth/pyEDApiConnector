@@ -4,9 +4,9 @@ from connector.base.base import ApiEntryPoint
 
 class Market(ApiEntryPoint):
     """
-    Informastion of Bodies
+    Get information about market in a station
     """
-    url = ApiEntryPoint.url_edsm + "system-v1/bodies"
+    url = ApiEntryPoint.url_edsm + "system-v1/stations/market"
 
     def __init__(self):
         pass
