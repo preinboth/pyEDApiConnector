@@ -1,9 +1,9 @@
 import unittest
 
-from src.connector.edsm.systemApi import station
+from src.connector.edsm.stationApi import station
 
 
-class TestSytemStation(unittest.TestCase):
+class TestSystemStation(unittest.TestCase):
     def test_get_station(self):
         json = station.getStation("Gacrux")
         # System

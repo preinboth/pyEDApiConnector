@@ -159,5 +159,57 @@ class EdsmApiTests(unittest.TestCase):
         assert json['marketId'] == 3228596736
         assert json['sId'] == 1644
         assert json['sName'] == "Ramanujan Terminal"
+
+    def test_get_faction(self):
+        json = edsmCntl.getFaction("Gacrux", 1)
+        if not json:
+            self.fail("Not Data found")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+    def test_get_faction_by_id(self):
+        json = edsmCntl.getFactionById(7564, 1)
+        if not json:
+            self.fail("Not Data found")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+    def test_get_traffic_system(self):
+        json = edsmCntl.getTrafficSystem("Gacrux")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+    def test_get_traffic_by_id(self):
+        json = edsmCntl.getTrafficById(7564)
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+    def test_get_Deaths(self):
+        json = edsmCntl.getDeaths("Gacrux")
+        if not json:
+            self.fail("Not Data found")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+    def test_get_Deaths_By_Id(self):
+        json = edsmCntl.getDeathsById(7564)
+        if not json:
+            self.fail("Not Data found")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+
 if __name__ == '__main__':
     unittest.main()

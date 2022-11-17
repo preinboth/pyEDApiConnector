@@ -1,7 +1,9 @@
 from connector.base import exception
 from connector.base.base import ApiEntryPoint
+from src.connector.edsm.stationApi import Station
 from src.utils import utils
-from src.connector.edsm.systemApi import Station
+
+
 class Outfitting(ApiEntryPoint):
     """
     Get information about outfitting in a station

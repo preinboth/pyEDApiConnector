@@ -2,11 +2,11 @@ from connector.base import exception
 from connector.base.base import ApiEntryPoint
 
 
-class Deaths(ApiEntryPoint):
+class Bodies(ApiEntryPoint):
     """
-    Get information about deaths in a system
+    Informastion of Bodies
     """
-    url = ApiEntryPoint.url_edsm + "system-v1/deaths"
+    url = ApiEntryPoint.url_edsm + "system-v1/bodies"
 
     def __init__(self):
         pass
@@ -14,6 +14,7 @@ class Deaths(ApiEntryPoint):
     def query(cls, params):
         """
         Build the query for call of the api
+
         :param params:
         :return:
         """
@@ -23,26 +24,26 @@ class Deaths(ApiEntryPoint):
             raise exception.SystemNotFoundError(params)
         return json
 
-    def getDeaths(cls, systemName):
+    def getBodies(cls, systemName):
         """
-        Get information about deaths in a system by SystemName
+        get Bodies for a systemname
 
-        :param systemName: The system name
-        :return: json
+        :param systemName: Name of a system
+        :return: bodies in json
         """
         json = cls.query({'systemName': systemName})
         return json
 
-    def getDeathsById(cls, systemId):
+    def getBodiesById(cls, systemId):
         """
-        Get information about deaths in a system by SystemId
+        get Bodies for a systemId
 
-        :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
-        :return: json
+        :param systemId: internal ID of a system
+        :return: bodies in json
         """
-        json = cls.query({'systemId': systemId})
+        json = cls.query({'systemId': str(systemId)})
         return json
 
 
 # -------------------
-deaths = Deaths()
+bodies = Bodies()
