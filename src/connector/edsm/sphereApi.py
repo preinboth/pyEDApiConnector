@@ -24,7 +24,7 @@ class Sphere(ApiEntryPoint):
             raise exception.SystemNotFoundError(params)
         return json
 
-    def getSystemsSphereBySystemName(cls, systemName, minradius, radius):
+    def getSystemsSphereBySystemName(cls, systemName, minradius=0, radius=0):
         """
         Get systems in a sphere radius
 
@@ -32,10 +32,14 @@ class Sphere(ApiEntryPoint):
         :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
         :param radius: Set to the desired radius In ly. Maximum value is 100.
         """
-        json = cls.query({'systemName': systemName, 'minradius': minradius, 'radius': radius})
+        parameters = {'showId': 1, 'showCoordinates': 1,
+                      'showPermit': 1, 'showInformation': 1,
+                      'showPrimaryStar': 1,
+                      'systemName': systemName, 'minradius': minradius, 'radius': radius}
+        json = cls.query(parameters)
         return json
 
-    def getSystemsSphereByCoords(cls, coords, minradius, radius):
+    def getSystemsSphereByCoords(cls, coords, minradius=0, radius=0):
         """
         Get systems in a sphere radius
 
@@ -49,8 +53,12 @@ class Sphere(ApiEntryPoint):
         :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
         :param radius: Set to the desired radius In ly. Maximum value is 100.
         """
-        json = cls.query(
-            {'x': coords['x'], 'y': coords['y'], 'z': coords['z'], 'minradius': minradius, 'radius': radius})
+        parameters = {'showId': 1, 'showCoordinates': 1,
+                      'showPermit': 1, 'showInformation': 1,
+                      'showPrimaryStar': 1,
+                      'x': coords['x'], 'y': coords['y'], 'z': coords['z'],
+                      'minradius': minradius, 'radius': radius}
+        json = cls.query(parameters)
         return json
 
 
