@@ -1,7 +1,9 @@
-from connector.edsm.systemApi import station
+from connector.edsm.marketApi import market
 from connector.edsm.systemApi import bodies
 from connector.edsm.systemApi import scan_values
-from connector.edsm.marketApi import market
+from connector.edsm.systemApi import station
+from connector.edsm.statusApi import server_status
+
 
 class EdsmCntl():
     # TODO: Documentation
@@ -86,6 +88,15 @@ class EdsmCntl():
         :return: json
         """
         return market.getMarketById(systemId, marketId)
+
+    def getEliteServerStatus(self):
+        """
+        Get Elite: Dangerous server status
+
+        :return: json
+        """
+        return server_status.getEliteServerStatus()
+
 
 # ------------------------
 edsmCntl = EdsmCntl()

@@ -129,5 +129,11 @@ class EdsmApiTests(unittest.TestCase):
         assert json['sId'] == 1644
         assert json['sName'] == "Ramanujan Terminal"
 
+    def test_get_elite_server_status(self):
+        json = edsmCntl.getEliteServerStatus()
+        if not json:
+            self.fail("Not Data found")
+
+
 if __name__ == '__main__':
     unittest.main()
