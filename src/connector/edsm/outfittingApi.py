@@ -1,7 +1,5 @@
 from connector.base import exception
 from connector.base.base import ApiEntryPoint
-from src.connector.edsm.stationApi import Station
-from src.utils import utils
 
 
 class Outfitting(ApiEntryPoint):
@@ -26,20 +24,27 @@ class Outfitting(ApiEntryPoint):
             raise exception.SystemNotFoundError(params)
         return json
 
-    def getOutfittingBySystemNames(cls, systemName, exclude):
-        parameters = {}
-        if len(systemName) == 1:
-            station = Station()
-            json_stations = station.getStation(systemName[0])
-            filtered = utils.filterStationsByType(json_stations, exclude)
-        else:
-            pass
-            # parameters['systemName[]'] = list(systemName)
+    def getOutfittingByName(cls, systemName, stationName):
+        """
+        Get information about outfitting in a station by name
 
+        :param systemName: The system name
+        :param stationName: The station inside the system.
+        :return: json
+        """
+        parameters = {'systemName': systemName, 'stationName': stationName}
         return cls.query(parameters)
 
-    def getOutfittingById(cls):
-        pass
+    def getOutfittingById(cls, systemId, marketId):
+        """
+        Get information about outfitting in a station by id
+
+        :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
+        :param marketId: The game marketId, if used no other parameters are needed.
+        :return: json
+        """
+        parameters = {'systemId': systemId, 'marketId': marketId}
+        return cls.query(parameters)
 
 
 # -------------------

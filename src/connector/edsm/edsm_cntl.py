@@ -5,6 +5,7 @@ from connector.edsm.cmdrRanksApi import cmdrRanks
 from connector.edsm.deathsApi import deaths
 from connector.edsm.factionsApi import factions
 from connector.edsm.marketApi import market
+from connector.edsm.outfittingApi import outfitting
 from connector.edsm.scanValuesApi import scan_values
 from connector.edsm.shipyardApi import shipyard
 from connector.edsm.stationApi import station
@@ -190,7 +191,7 @@ class EdsmCntl():
         """
         return cmdrRanks.getCmdrRanks(cmdrname, api_key)
 
-    def getCmdrCredits(cls, cmdrname, api_key):
+    def getCmdrCredits(self, cmdrname, api_key):
         """
         Get commander credits by CmdrName and APiKey
 
@@ -200,7 +201,7 @@ class EdsmCntl():
         """
         return cmdrCredits.getCmdrCredits(cmdrname, api_key)
 
-    def getCmdrMaterials(cls, cmdrname, api_key):
+    def getCmdrMaterials(self, cmdrname, api_key):
         """
         Get commander materials/encoded data/cargo
 
@@ -209,6 +210,26 @@ class EdsmCntl():
         :return: json
         """
         return cmdrMaterials.getCmdrMaterials(cmdrname, api_key)
+
+    def getOutfittingByName(self, systemName, stationName):
+        """
+        Get information about outfitting in a station by name
+
+        :param systemName: The system name
+        :param stationName: The station inside the system.
+        :return: json
+        """
+        return outfitting.getOutfittingByName(systemName, stationName)
+
+    def getOutfittingById(self, systemId, marketId):
+        """
+        Get information about outfitting in a station by id
+
+        :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
+        :param marketId: The game marketId, if used no other parameters are needed.
+        :return: json
+        """
+        return outfitting.getOutfittingById(systemId, marketId)
 
 
 # ------------------------
