@@ -1,27 +1,29 @@
 import math
 
 
-def filterStationsByType(stations: list, exlude_type: list):
+def filterStationsByType(system, exclude_type: list):
     """
     filter a List of station by exluded types
 
-    :param stations: List of stations
-    :param exlude_type: List of exluded station types
-    :return:
+    :param system: the system
+    :param exclude_type: List of exluded station types
+
+    :return: filtered
     """
-    filtered = []
-    for station in stations['stations']:
-        if station.get("type") not in exlude_type:
-            filtered.append(station)
-    return filtered
+    for i in system['stations']:
+        # print(x['type'])
+        if (i['type']) in exclude_type:
+            system['stations'].remove(i)
+    print('Hallo')
+    return system
 
 
 def calculate_distance(coords_1, coords_2):
     """
     calculate the distance for two systems
 
-    :param coords_1:
-    :param coords_2:
+    :param coords_1: start
+    :param coords_2: target
     :return:
     """
     distance = math.sqrt((coords_1['coords']["x"] - coords_2['coords']["x"]) ** 2 + (

@@ -1,5 +1,6 @@
 from connector.base import exception
 from connector.base.base import ApiEntryPoint
+from utils.utils import filterStationsByType
 
 
 class Station(ApiEntryPoint):
@@ -24,36 +25,31 @@ class Station(ApiEntryPoint):
             raise exception.SystemNotFoundError(params)
         return json
 
-    def getStation(cls, systemName):
+    def getStation(cls, systemName, exclude: list):
         """
         Get information about stations in a system by a systemname
 
         :param systemName: Use the systemName parameter to filter flight logs by system name.
+        :param exclude: List of excluded stationtypes
         :return: json
         """
-        parameters = {}
-        parameters['systemName'] = systemName
-        # if len(systemName) == 1:
-        #     parameters['systemName'] = systemName[0]
-        # else:
-        #     parameters['systemName[]'] = list(systemName)
-        json = cls.query(parameters)
-        return json
+        parameters = {'systemName': systemName}
+        system = cls.query(parameters)
+        # TODO: Stations filtern
+        filtered = filterStationsByType(system, exclude)
+        return filtered
 
-    def getStationById(cls, systemId):
+    def getStationById(cls, systemId, exclude: list):
         """
         Get information about stations in a system by a systemId
 
         :param systemId: By passing directly our intenral ID, you can override the system name.
+        :param exclude: List of excluded stationtypes
         :return: json
         """
         parameters = {'systemId': int(systemId)}
-        # if len(systemId) == 1:
-        # else:
-        # parameters['systemId[]'] = list(systemId)
-
-        json = cls.query(parameters)
-        return json
+        # TODO: Stations filtern
+        return cls.query(parameters)
 
 
 # -------------------
