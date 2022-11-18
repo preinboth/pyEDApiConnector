@@ -32,9 +32,11 @@ class Cube(ApiEntryPoint):
         :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
         :param size: Set to the desired size of the cube In ly. Maximum value is 200.
         """
-
-        json = cls.query({'systemName': systemName, 'size': size})
-        return json
+        parameters = {'showId': 1, 'showCoordinates': 1,
+                      'showPermit': 1, 'showInformation': 1,
+                      'showPrimaryStar': 1,
+                      'systemName': systemName, 'size': size}
+        return cls.query(parameters)
 
     def getSystemsCubeByCoords(cls, coords, size):
         """
@@ -49,8 +51,11 @@ class Cube(ApiEntryPoint):
                             }
         :param size: Set to the desired size of the cube In ly. Maximum value is 200.
         """
-        json = cls.query({'x': coords['x'], 'y': coords['y'], 'z': coords['z'], 'size': size})
-        return json
+        parameters = {'showId': 1, 'showCoordinates': 1, 'showPermit': 1,
+                      'showInformation': 1, 'showPrimaryStar': 1,
+                      'x': 0, 'y': 0, 'z': 0,
+                      'size': size}
+        return cls.query(parameters)
 
 
 # -------------------

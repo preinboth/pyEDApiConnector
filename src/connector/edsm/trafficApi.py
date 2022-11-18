@@ -24,15 +24,23 @@ class Traffic(ApiEntryPoint):
             raise exception.SystemNotFoundError(params)
         return json
 
-    def getTrafficSystem(cls, systemName, systemId):
+    def getTrafficSystem(cls, systemName):
         """
-        Get information about traffic in a system
+        Get information about traffic in a system by a systemname
 
         :param systemName: The system name
-        :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
+        :return: json
         """
-        json = cls.query({'systemName': systemName, 'systemId': systemId})
-        return json
+        return cls.query({'systemName': systemName})
+
+    def getTrafficById(cls, systemId):
+        """
+        Get information about traffic in a system by a systemId
+
+        :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
+        :return: json
+        """
+        return cls.query({'systemId': systemId})
 
 
 # --------------

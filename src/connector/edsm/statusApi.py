@@ -1,4 +1,3 @@
-from connector.base import exception
 from connector.base.base import ApiEntryPoint
 
 
@@ -8,25 +7,13 @@ class ServerStatus(ApiEntryPoint):
     def __init__(self):
         pass
 
-    def query(cls, params):
+    def getEliteServerStatus(cls):
         """
-        Build the query for call of the api
-        :param params:
-        :return:
-        """
-        try:
-            json = super().query(params)
-        except exception.NotFoundError:
-            raise exception.SystemNotFoundError(params)
-        return json
+        Get Elite: Dangerous server status
 
-    def getEliteServerStatus(self):
+        :return: json
         """
-        getEliteServerStatus
-
-        :return: jeson
-        """
-        return self.query()
+        return cls.query()
 
 
 # --------------------------------------

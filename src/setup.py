@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='py_ED-Api-Connector',
+    name='pyED-Api-Connector',
     version='v0.0.1',
     packages=['utils', 'connector', 'connector.base', 'connector.base.edLogger', 'connector.eddb', 'connector.edsm',
               'connector.spansh', 'eddb', 'edsm', 'spansh'],

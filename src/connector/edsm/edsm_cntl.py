@@ -1,262 +1,237 @@
-from connector.edsm.cubeApi import cube
+from connector.edsm.bodiesApi import bodies
+from connector.edsm.cmdrCreaditsApi import cmdrCredits
+from connector.edsm.cmdrMaterialsApi import cmdrMaterials
+from connector.edsm.cmdrRanksApi import cmdrRanks
 from connector.edsm.deathsApi import deaths
-from connector.edsm.sphereApi import sphere
+from connector.edsm.factionsApi import factions
+from connector.edsm.marketApi import market
+from connector.edsm.outfittingApi import outfitting
+from connector.edsm.scanValuesApi import scan_values
+from connector.edsm.shipyardApi import shipyard
+from connector.edsm.stationApi import station
 from connector.edsm.statusApi import server_status
-from connector.edsm.systemApi import Bodies
-from connector.edsm.systemsApi import System, Systems
 from connector.edsm.trafficApi import traffic
 
 
 class EdsmCntl():
     # TODO: Documentation
     # TODO: Implementation
-    __edsm_system = System()
-    __edsm_systems = Systems()
-    __edsm_bodies = Bodies()
 
     def __init__(self):
         pass
 
-    ########################################
-    ##           System/Systems           ##
-    ########################################
-    def getSystem(self, systemName):
+    # Get information about stations in a system
+    def getStation(self, systemName):
         """
-        get Systeminformation by a Systemname
+        Get information about stations in a system by a systemname
 
-        :param systemName: Name of a system
+        :param systemName: Use the systemName parameter to filter flight logs by system name.
         :return: json
         """
-        return self.__edsm_system.getSystem(systemName)
+        # TODO: Stations filtern
+        return station.getStation(systemName)
 
-    def getSystems(self, *systemName):
+    def getStationById(self, systemId):
         """
-        get complete information of a list of systems
+        Get information about stations in a system by a systemId
 
-        :param systemName: List of system names
-        :return:  json
-        """
-        return self.__edsm_systems.getSystems(*systemName)
-
-    def getSystemId(self, systemName):
-        """
-        get SystemId by a Systemname
-
-        :param systemName: Name of a system
+        :param systemId: By passing directly our intenral ID, you can override the system name.
         :return: json
         """
-        return self.__edsm_system.getIds(systemName)
+        # TODO: Stations filtern
+        return station.getStationById(systemId)
 
-    def getSystemsIds(self, *systemName):
-        """
-        get SystemIds of a list of systems
-
-        :param systemName: List of system names
-        :return:  json:
-        """
-        return self.__edsm_systems.getIds(*systemName)
-
-    def getSystemCoordinate(self, systemName):
-        """
-        get Coordinates by a Systemname
-
-        :param systemName: Name of a system
-        :return: json
-        """
-        return self.__edsm_system.getCoordinates_by_systemname(systemName)
-
-    def getSystemsCoordinates(self, *systemName):
-        """
-        get coordinates of a list of systems
-
-        :param systemName: List of system names
-        :return:  json:
-        """
-        return self.__edsm_systems.getCoordinates_by_SystemList(*systemName)
-
-    def getSystemPermit(self, systemName):
-        """
-        get Permit by a Systemname
-
-        :param systemName: Name of a system
-        :return:  json
-        """
-        return self.__edsm_system.getPermit(systemName)
-
-    def getSystemsPermit(self, *systemName):
-        """
-        get permits of a list of systems
-
-        :param systemName: List of system names
-        :return:  json:
-        """
-        return self.__edsm_systems.getPermit(*systemName)
-
-    def getSystemInformation(self, systemName):
-        """
-        get Information of a system
-
-        :param systemName: Name of a system
-        :return:  json
-        """
-        return self.__edsm_system.getInformation(systemName)
-
-    def getSystemsInformation(self, *systemName):
-        """
-        get Information of a list of systems
-
-        :param systemName: List of system names
-        :return:  json:
-        """
-        return self.__edsm_systems.getInformation(*systemName)
-
-    def getSystemPrimaryStar(self, systemName):
-        """
-        get primary Star of a system
-
-        :param systemName: Name of a system
-        :return:  json
-        """
-        return self.__edsm_system.getPrimaryStar(systemName)
-
-    def getSystemsPrimaryStar(self, *systemName):
-        return self.__edsm_systems.getPrimaryStar(*systemName)
-
-    #### Bodies ####
+    # Get information about celestial bodies in a system
     def getBodies(self, systemName):
-        return self.__edsm_bodies.getBodies(systemName)
+        """
+        get Bodies for a systemname
+
+        :param systemName: Name of a system
+        :return: bodies in json
+        """
+        return bodies.getBodies(systemName)
 
     def getBodiesById(self, systemId):
-        return self.__edsm_bodies.getBodiesById(systemId)
-
-    ########################################
-    ##          EdServerStatus            ##
-    ########################################
-    def getEdServerStatus(self):
         """
-        getEliteServerStatus
+        get Bodies for a systemId
+
+        :param systemId: internal ID of a system
+        :return: bodies in json
+        """
+        return bodies.getBodiesById(systemId)
+
+    # Get estimated scan values of a system
+    def getEstimatedValue(self, systemName):
+        """
+        Get estimated scan values of a system by a systemname
+
+        :param systemName: Name of a system
+        :return: json
+        """
+        return scan_values.getEstimatedValue(systemName)
+
+    def getEstimatedValueById(self, systemId):
+        """
+        Get estimated scan values of a system by a systemId
+
+        :param systemId: internal ID of a system
+        :return: json
+        """
+        return scan_values.getEstimatedValueById(systemId)
+
+    def getMarketByName(self, systemName, stationName):
+        """
+        Get information about market in a station by name
+
+        :param systemName: The system name
+        :param stationName: The station name inside the system.
+        :return: json
+        """
+        return market.getMarketByName(systemName, stationName)
+
+    def getMarketById(self, systemId, marketId):
+        """
+        Get information about market in a station by id
+
+        :param systemId: The system ID
+        :param marketId: The game marketId
+        :return: json
+        """
+        return market.getMarketById(systemId, marketId)
+
+    def getEliteServerStatus(self):
+        """
+        Get Elite: Dangerous server status
 
         :return: json
         """
         return server_status.getEliteServerStatus()
 
-    ########################################
-    ##               Deaths               ##
-    ########################################
-    def getSystemDeathsBySystemName(self, systemName):
+    def getShipyard(self, systemName, stationName):
+        """
+        Get information about shipyard in a station by name
+
+        :param systemName: The system name
+        :param stationName: The station name inside the system.
+        :return: json
+        """
+        return shipyard.getShipyard(systemName, stationName)
+
+    def getShipyardById(self, systemId, marketId):
+        """
+        Get information about shipyard in a station by id
+
+        :param systemId: The system ID
+        :param marketId: The game marketId
+        :return: json
+        """
+        return shipyard.getShipyardById(systemId, marketId)
+
+    def getFaction(self, systemName, showHistory=0):
+        """
+        Get information about factions in a system by name
+
+        :param systemName: The system name
+        :param showHistory: Set to 1 to get the factions history under the requested system.
+        :return: json
+        """
+        return factions.getFaction(systemName, showHistory)
+
+    def getFactionById(self, systemId, showHistory=0):
+        """
+        Get information about factions in a system by name
+
+        :param systemId: The system ID
+        :param showHistory: Set to 1 to get the factions history under the requested system.
+        :return: json
+        """
+        return factions.getFactionById(systemId, showHistory)
+
+    def getTrafficSystem(cls, systemName):
+        """
+        Get information about traffic in a system by a systemname
+
+        :param systemName: The system name
+        :return: json
+        """
+        return traffic.getTrafficSystem(systemName)
+
+    def getTrafficById(self, systemId):
+        """
+        Get information about traffic in a system by a systemId
+
+        :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
+        :return: json
+        """
+        return traffic.getTrafficById(systemId)
+
+    def getDeaths(self, systemName):
         """
         Get information about deaths in a system by SystemName
 
         :param systemName: The system name
         :return: json
         """
-        return deaths.getSystemDeathsBySystemName(systemName)
+        return deaths.getDeaths(systemName)
 
-    def getSystemDeathsBySystemId(self, systemId):
+    def getDeathsById(self, systemId):
         """
         Get information about deaths in a system by SystemId
 
         :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
         :return: json
         """
-        return deaths.getSystemDeathsBySystemId(systemId)
+        return deaths.getDeathsById(systemId)
 
-    ########################################
-    ##              Factions              ##
-    ########################################
-
-    ########################################
-    ##             Commander              ##
-    ########################################
-
-    ########################################
-    ##               Logs                 ##
-    ########################################
-
-    ########################################
-    ##              Market                ##
-    ########################################
-
-    ########################################
-    ##            Outfitting              ##
-    ########################################
-
-    ########################################
-    ##              Shipyard              ##
-    ########################################
-
-    ########################################
-    ##               Cube                 ##
-    ########################################
-    def getSystemsCube(self, systemName, size):
+    def getCmdrRanks(self, cmdrname, api_key):
         """
-        Get systems in a cube by a system name which will be the center of the sphere.
+        Get commander ranks by CmdrName and APiKey
 
-        :param systemName: The system name which will be the center of the sphere.
-        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
-        :param size: Set to the desired size of the cube In ly. Maximum value is 200.
-        :return:  json
+        :param cmdrname: The name of the commander as registered on EDSM.
+        :param api_key: The API Key associate the commander name with his account.
+        :return: json
         """
-        return cube.getSystemsCubeBySystemName(systemName, size)
+        return cmdrRanks.getCmdrRanks(cmdrname, api_key)
 
-    def getSystemsCubeByCoords(self, coords, size):
+    def getCmdrCredits(self, cmdrname, api_key):
         """
-        Get systems in a cube by a coords which will be the center of the sphere.
+        Get commander credits by CmdrName and APiKey
 
-        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
-                      Format Coords:
-                      coords = {
-                            'x': 0,
-                            'y': 0,
-                            'z': 0,
-                            }
-        :param size: Set to the desired size of the cube In ly. Maximum value is 200.
-        :return:  json
+        :param cmdrname: The name of the commander as registered on EDSM.
+        :param api_key: The API Key associate the commander name with his account.
+        :return: json
         """
-        return cube.getSystemsCubeByCoords(coords, size)
+        return cmdrCredits.getCmdrCredits(cmdrname, api_key)
 
-    ########################################
-    ##             Sphere                 ##
-    ########################################
-    def getSystemsSphereBySystemName(self, systemName, minradius, radius):
+    def getCmdrMaterials(self, cmdrname, api_key):
         """
-        Get systems in a sphere radius
+        Get commander materials/encoded data/cargo
 
-        :param systemName: The system name which will be the center of the sphere.
-        :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
-        :param radius: Set to the desired radius In ly. Maximum value is 100.
-        :return:  json
+        :param cmdrname: The name of the commander as registered on EDSM.
+        :param api_key: The API Key associate the commander name with his account.
+        :return: json
         """
-        return sphere.getSystemsSphereBySystemName(systemName, minradius, radius)
+        return cmdrMaterials.getCmdrMaterials(cmdrname, api_key)
 
-    def getSystemsSphereByCoords(cls, coords, minradius, radius):
+    def getOutfittingByName(self, systemName, stationName):
         """
-        Get systems in a sphere radius
-
-        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
-                      Format Coords:
-                      coords = {
-                            'x': 0,
-                            'y': 0,
-                            'z': 0,
-                            }
-        :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
-        :param radius: Set to the desired radius In ly. Maximum value is 100.
-        :return:  json
-        """
-        return sphere.getSystemsSphereByCoords(coords, minradius, radius)
-
-    ########################################
-    ##               Traffic              ##
-    ########################################
-    def getTrafficSystem(self, systemName, systemId):
-        """
-        Get information about traffic in a system
+        Get information about outfitting in a station by name
 
         :param systemName: The system name
-        :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
+        :param stationName: The station inside the system.
+        :return: json
         """
-        return traffic.getTrafficSystem(systemName, systemId)
+        return outfitting.getOutfittingByName(systemName, stationName)
+
+    def getOutfittingById(self, systemId, marketId):
+        """
+        Get information about outfitting in a station by id
+
+        :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
+        :param marketId: The game marketId, if used no other parameters are needed.
+        :return: json
+        """
+        return outfitting.getOutfittingById(systemId, marketId)
 
 
 # ------------------------

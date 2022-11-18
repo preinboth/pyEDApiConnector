@@ -1,125 +1,232 @@
 import unittest
 
-from connector.edsm.edsm_cntl import EdsmCntl
+from connector.edsm.edsm_cntl import edsmCntl
 
 
 class EdsmApiTests(unittest.TestCase):
 
-    def test_getBodies_HD43193(self):
-        edsmCntl = EdsmCntl()
+    # Api System Station
+    def test_getStation(self):
+        json = edsmCntl.getStation("Gacrux")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+        # TODO: Stations checken
+
+    def test_get_station_by_id(self):
+        json = edsmCntl.getStationById(9324)
+        assert json['id'] == 9324
+        assert json['id64'] == 2871051494841
+        assert json['name'] == 'Honoto'
+
+    # Api System Bodies
+    def test_get_bodies(self):
         json = edsmCntl.getBodies("HD 43193")
         # system data
-        assert json['id'] == 85920
-        assert json['name'] == "HD 43193"
-
+        self.assertEqual(85920, json['id'])
+        self.assertEqual("HD 43193", json['name'])
         # body count
-        assert len(json['bodies']) == 17
-
+        self.assertEqual(17, len(json['bodies']))
         # star
         star = json['bodies'][0]
-        assert star['id'] == 219074
-        assert star['name'] == "HD 43193 A"
-        assert star['type'] == "Star"
-        assert star['subType'] == "B (Blue-White) Star"
-        assert star['distanceToArrival'] == 0
-        assert star['isMainStar'] == True
-        assert star['isScoopable'] == True
-        assert star['age'] == 760
-        assert star['luminosity'] == "V"
-        assert star['absoluteMagnitude'] == 0.443283
-        assert star['solarMasses'] == 14.5625
-        assert star['solarRadius'] == 5.3612057397555715
-        assert star['surfaceTemperature'] == 30995
-        assert star['orbitalPeriod'] == 277.5355276686227
-        assert star['semiMajorAxis'] == 0.46155863848693135
-        assert star['orbitalEccentricity'] == 0.275417
-        assert star['orbitalInclination'] == 73.390816
-        assert star['argOfPeriapsis'] == 23.460679
-        assert star['rotationalPeriod'] == 2.2797341189814815
-        assert False == star['rotationalPeriodTidallyLocked']
-        assert star['axialTilt'] == None
+        self.assertEqual(219074, star['id'])
+        self.assertEqual("HD 43193 A", star['name'])
+        self.assertEqual("Star", star['type'])
+        self.assertEqual("B (Blue-White) Star", star['subType'])
+        self.assertEqual(0, star['distanceToArrival'])
+        self.assertTrue(star['isMainStar'])
+        self.assertTrue(star['isScoopable'])
+        self.assertFalse(star['rotationalPeriodTidallyLocked'])
+        self.assertEqual(None, star['axialTilt'])
 
         # planet
         planet = json['bodies'][15]
-        assert planet['id'] == 311417
-        assert planet['name'] == "HD 43193 CD 7 a"
-        assert planet['type'] == "Planet"
-        assert planet['subType'] == "Class IV gas giant"
-        assert False == planet['isLandable']
-        assert planet['gravity'] == 11.175634423255477
-        assert planet['earthMasses'] == 1574.405762
-        assert planet['radius'] == 75701.896
-        assert planet['surfaceTemperature'] == 1021
-        assert planet['volcanismType'] == "No volcanism"
-        assert planet['atmosphereType'] == "No atmosphere"
-        assert planet['terraformingState'] == "Not terraformable"
-        assert planet['orbitalPeriod'] == 55.3160257361574
-        assert planet['semiMajorAxis'] == 0.1110330249988177
-        assert planet['orbitalEccentricity'] == None
-        assert planet['orbitalInclination'] == 28.739708
-        assert planet['argOfPeriapsis'] == 248.851365
-        assert planet['rotationalPeriod'] == 57.64743373635417
-        assert planet['rotationalPeriodTidallyLocked'] == True
-        assert planet['axialTilt'] == 0.198277
+        self.assertEqual(311417, planet['id'])
+        self.assertEqual("HD 43193 CD 7 a", planet['name'])
+        self.assertEqual("Planet", planet['type'])
+        self.assertEqual("Class IV gas giant", planet['subType'])
 
-    def test_getBodiesById_HD43193(self):
-        edsmCntl = EdsmCntl()
+        self.assertFalse(planet['isLandable'])
+        self.assertEqual("No volcanism", planet['volcanismType'])
+        self.assertEqual("No atmosphere", planet['atmosphereType'])
+        self.assertEqual("Not terraformable", planet['terraformingState'])
+        self.assertEqual(None, planet['orbitalEccentricity'])
+        self.assertFalse(planet['rotationalPeriodTidallyLocked'])
+
+    def test_get_bodies_by_id(self):
         json = edsmCntl.getBodiesById(85920)
 
         # system data
-        assert json['id'] == 85920
-        assert json['name'] == "HD 43193"
-
+        self.assertEqual(85920, json['id'])
+        self.assertEqual("HD 43193", json['name'])
         # body count
-        assert len(json['bodies']) == 17
-
+        self.assertEqual(17, len(json['bodies']))
         # star
         star = json['bodies'][0]
-        assert star['id'] == 219074
-        assert star['name'] == "HD 43193 A"
-        assert star['type'] == "Star"
-        assert star['subType'] == "B (Blue-White) Star"
-        assert star['distanceToArrival'] == 0
-        assert star['isMainStar'] == True
-        assert star['isScoopable'] == True
-        assert star['age'] == 760
-        assert star['luminosity'] == "V"
-        assert star['absoluteMagnitude'] == 0.443283
-        assert star['solarMasses'] == 14.5625
-        assert star['solarRadius'] == 5.3612057397555715
-        assert star['surfaceTemperature'] == 30995
-        assert star['orbitalPeriod'] == 277.5355276686227
-        assert star['semiMajorAxis'] == 0.46155863848693135
-        assert star['orbitalEccentricity'] == 0.275417
-        assert star['orbitalInclination'] == 73.390816
-        assert star['argOfPeriapsis'] == 23.460679
-        assert star['rotationalPeriod'] == 2.2797341189814815
-        assert False == star['rotationalPeriodTidallyLocked']
-        assert star['axialTilt'] == None
+        self.assertEqual(219074, star['id'])
+        self.assertEqual("HD 43193 A", star['name'])
+        self.assertEqual("Star", star['type'])
+        self.assertEqual("B (Blue-White) Star", star['subType'])
+        self.assertEqual(0, star['distanceToArrival'])
+        self.assertTrue(star['isMainStar'])
+        self.assertTrue(star['isScoopable'])
+        self.assertFalse(star['rotationalPeriodTidallyLocked'])
+        self.assertEqual(None, star['axialTilt'])
 
         # planet
         planet = json['bodies'][15]
-        assert planet['id'] == 311417
-        assert planet['name'] == "HD 43193 CD 7 a"
-        assert planet['type'] == "Planet"
-        assert planet['subType'] == "Class IV gas giant"
-        assert False == planet['isLandable']
-        assert planet['gravity'] == 11.175634423255477
-        assert planet['earthMasses'] == 1574.405762
-        assert planet['radius'] == 75701.896
-        assert planet['surfaceTemperature'] == 1021
-        assert planet['volcanismType'] == "No volcanism"
-        assert planet['atmosphereType'] == "No atmosphere"
-        assert planet['terraformingState'] == "Not terraformable"
-        assert planet['orbitalPeriod'] == 55.3160257361574
-        assert planet['semiMajorAxis'] == 0.1110330249988177
-        assert planet['orbitalEccentricity'] == None
-        assert planet['orbitalInclination'] == 28.739708
-        assert planet['argOfPeriapsis'] == 248.851365
-        assert planet['rotationalPeriod'] == 57.64743373635417
-        assert planet['rotationalPeriodTidallyLocked'] == True
-        assert planet['axialTilt'] == 0.198277
+        self.assertEqual(311417, planet['id'])
+        self.assertEqual("HD 43193 CD 7 a", planet['name'])
+        self.assertEqual("Planet", planet['type'])
+        self.assertEqual("Class IV gas giant", planet['subType'])
 
+        self.assertFalse(planet['isLandable'])
+        self.assertEqual("No volcanism", planet['volcanismType'])
+        self.assertEqual("No atmosphere", planet['atmosphereType'])
+        self.assertEqual("Not terraformable", planet['terraformingState'])
+        self.assertEqual(None, planet['orbitalEccentricity'])
+        self.assertFalse(planet['rotationalPeriodTidallyLocked'])
+
+    def test_get_estimated_value(self):
+        json = edsmCntl.getEstimatedValue("Sol")
+        # system data
+        self.assertEqual(27, json['id'])
+        self.assertEqual("Sol", json['name'])
+
+    def test_get_estimated_value_by_id(self):
+        json = edsmCntl.getEstimatedValueById(27)
+        # system data
+        self.assertEqual(27, json['id'])
+        self.assertEqual("Sol", json['name'])
+
+    def test_get_market_by_name(self):
+        json = edsmCntl.getMarketByName('Gacrux', 'Ramanujan Terminal')
+        if not json:
+            self.fail("Not Data found")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+        # Market
+        assert json['marketId'] == 3228596736
+        assert json['sId'] == 1644
+        assert json['sName'] == "Ramanujan Terminal"
+
+    def test_get_market_by_id(self):
+        pass
+        json = edsmCntl.getMarketById(7564, 3228596736)
+        if not json:
+            self.fail("Not Data found")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+        # Market
+        assert json['marketId'] == 3228596736
+        assert json['sId'] == 1644
+        assert json['sName'] == "Ramanujan Terminal"
+
+    def test_get_elite_server_status(self):
+        json = edsmCntl.getEliteServerStatus()
+        if not json:
+            self.fail("Not Data found")
+
+    def test_get_shipyard(self):
+        json = edsmCntl.getShipyard('Gacrux', 'Ramanujan Terminal')
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+        # Market
+        assert json['marketId'] == 3228596736
+        assert json['sId'] == 1644
+        assert json['sName'] == "Ramanujan Terminal"
+
+        # Ship
+
+    def test_get_shipyard_by_id(self):
+        json = edsmCntl.getShipyardById(7564, 3228596736)
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+        # Market
+        assert json['marketId'] == 3228596736
+        assert json['sId'] == 1644
+        assert json['sName'] == "Ramanujan Terminal"
+
+    def test_get_faction(self):
+        json = edsmCntl.getFaction("Gacrux", 1)
+        if not json:
+            self.fail("Not Data found")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+    def test_get_faction_by_id(self):
+        json = edsmCntl.getFactionById(7564, 1)
+        if not json:
+            self.fail("Not Data found")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+    def test_get_traffic_system(self):
+        json = edsmCntl.getTrafficSystem("Gacrux")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+    def test_get_traffic_by_id(self):
+        json = edsmCntl.getTrafficById(7564)
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+    def test_get_Deaths(self):
+        json = edsmCntl.getDeaths("Gacrux")
+        if not json:
+            self.fail("Not Data found")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+    def test_get_Deaths_By_Id(self):
+        json = edsmCntl.getDeathsById(7564)
+        if not json:
+            self.fail("Not Data found")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+    def test_get_outfitting_by_name(self):
+        json = edsmCntl.getOutfittingByName("Gacrux", "Ramanujan Terminal")
+        if not json:
+            self.fail("Not Data found")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
+
+    def test_get_outfitting_by_id(self):
+        json = edsmCntl.getOutfittingById(7564, 3228596736)
+        if not json:
+            self.fail("Not Data found")
+        # System
+        assert json['id'] == 7564
+        assert json['id64'] == 672028239289
+        assert json['name'] == 'Gacrux'
 
 if __name__ == '__main__':
     unittest.main()

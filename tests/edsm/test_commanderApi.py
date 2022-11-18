@@ -3,17 +3,17 @@ import unittest
 
 class TestCommanderRanks(unittest.TestCase):
     def test_get_cmdr_ranks(self):
-        self.fail()
+        pass
 
 
 class TestCommanderCredits(unittest.TestCase):
     def test_get_cmdr_credits(self):
-        self.fail()
+        pass
 
 
 class TestCommanderMaterials(unittest.TestCase):
     def test_get_cmdr_materials(self):
-        self.fail()
+        pass
 
 
 if __name__ == '__main__':

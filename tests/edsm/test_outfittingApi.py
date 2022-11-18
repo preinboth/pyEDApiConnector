@@ -1,11 +1,11 @@
 import unittest
 
-from connector.edsm.deathsApi import deaths
+from connector.edsm.outfittingApi import outfitting
 
 
-class TestEdsmDeaths(unittest.TestCase):
-    def test_get_Deaths(self):
-        json = deaths.getDeaths("Gacrux")
+class TestCmdrRanks(unittest.TestCase):
+    def test_get_outfitting_by_name(self):
+        json = outfitting.getOutfittingByName("Gacrux", "Ramanujan Terminal")
         if not json:
             self.fail("Not Data found")
         # System
@@ -13,8 +13,8 @@ class TestEdsmDeaths(unittest.TestCase):
         assert json['id64'] == 672028239289
         assert json['name'] == 'Gacrux'
 
-    def test_get_Deaths_By_Id(self):
-        json = deaths.getDeathsById(7564)
+    def test_get_outfitting_by_id(self):
+        json = outfitting.getOutfittingById(7564, 3228596736)
         if not json:
             self.fail("Not Data found")
         # System
