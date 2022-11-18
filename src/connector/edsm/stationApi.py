@@ -1,6 +1,5 @@
 from connector.base import exception
 from connector.base.base import ApiEntryPoint
-from utils.utils import filterStationsByType
 
 
 class Station(ApiEntryPoint):
@@ -25,7 +24,7 @@ class Station(ApiEntryPoint):
             raise exception.SystemNotFoundError(params)
         return json
 
-    def getStation(cls, systemName, exclude: list):
+    def getStation(cls, systemName):
         """
         Get information about stations in a system by a systemname
 
@@ -34,12 +33,9 @@ class Station(ApiEntryPoint):
         :return: json
         """
         parameters = {'systemName': systemName}
-        system = cls.query(parameters)
-        # TODO: Stations filtern
-        filtered = filterStationsByType(system, exclude)
-        return filtered
+        return cls.query(parameters)
 
-    def getStationById(cls, systemId, exclude: list):
+    def getStationById(cls, systemId):
         """
         Get information about stations in a system by a systemId
 

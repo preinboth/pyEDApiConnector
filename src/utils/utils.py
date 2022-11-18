@@ -10,11 +10,20 @@ def filterStationsByType(system, exclude_type: list):
 
     :return: filtered
     """
-    for i in system['stations']:
-        # print(x['type'])
-        if (i['type']) in exclude_type:
-            system['stations'].remove(i)
-    print('Hallo')
+    # filtered = []
+    # for station in system['stations']:
+    #     if (station['type']) not in exclude_type:
+    #         filtered.append(station)
+    # print('Hallo')
+    # system['stations'] == filtered
+    # print('Hallo')
+
+    for station in system['stations']:
+        if (station['type']) in exclude_type:
+            system['stations'].remove(station)
+    for station in system['stations']:
+        if (station['type']) in exclude_type:
+            print(station['type'])
     return system
 
 

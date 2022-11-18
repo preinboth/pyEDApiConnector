@@ -28,6 +28,7 @@ class EdsmCntl():
         :param systemName: Use the systemName parameter to filter flight logs by system name.
         :return: json
         """
+        # TODO: Stations filtern
         return station.getStation(systemName)
 
     def getStationById(self, systemId):
@@ -37,6 +38,7 @@ class EdsmCntl():
         :param systemId: By passing directly our intenral ID, you can override the system name.
         :return: json
         """
+        # TODO: Stations filtern
         return station.getStationById(systemId)
 
     # Get information about celestial bodies in a system
