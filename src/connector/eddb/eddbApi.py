@@ -3,6 +3,9 @@ from connector.base.base import ApiEntryPoint
 
 
 class Attractions(ApiEntryPoint):
+    """
+    Attractions
+    """
     url = ApiEntryPoint.url_eddb + "attractions.json"
 
     def __init__(self):
