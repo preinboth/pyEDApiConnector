@@ -1,2 +1,2 @@
-setuptools~=65.5.1
+setuptools~=65.6.0
 requests~=2.28.1
