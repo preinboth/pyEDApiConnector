@@ -6,7 +6,7 @@ setup(
     packages=['utils', 'connector', 'connector.base', 'connector.base.edLogger', 'connector.eddb', 'connector.edsm',
               'connector.spansh', 'eddb', 'edsm', 'spansh'],
     package_dir={'': 'src'},
-    url='https://github.com/preinboth/pyED-Api-Connector',
+    url='https://github.com/preinboth/pyEDApiConnector',
     license='MIT',
     author='preinboth',
     author_email='github@preinboth.de',
