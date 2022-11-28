@@ -12,7 +12,6 @@ log = logging.getLogger(__name__)
 
 
 class RoutePlanner(ApiEntryPoint):
-
     def __init__(self):
         pass
 
@@ -30,10 +29,17 @@ class RoutePlanner(ApiEntryPoint):
         return REQUEST_HEADERS
 
     def __getRoute(self, coords_1, coords_2, efficiency, range):
-        distance = calculate_distance(coords_1, coords_2)
+        calculate_distance(coords_1, coords_2)
         REQUEST_HEADERS = self.__getRequestHeaders()
-        payload = {"efficiency": efficiency, "range": range, "from": coords_1['name'], "to": coords_2['name']}
-        response = requests.post("https://www.spansh.co.uk/api/route", data=payload, headers=REQUEST_HEADERS)
+        payload = {
+            "efficiency": efficiency,
+            "range": range,
+            "from": coords_1["name"],
+            "to": coords_2["name"],
+        }
+        response = requests.post(
+            "https://www.spansh.co.uk/api/route", data=payload, headers=REQUEST_HEADERS
+        )
         job = eval(response.text)
 
         if "error" in job:
@@ -46,7 +52,10 @@ class RoutePlanner(ApiEntryPoint):
         REQUEST_HEADERS = self.__getRequestHeaders()
         # Wait for job completion
         while 1:
-            response = requests.get("https://www.spansh.co.uk/api/results/" + job["job"], headers=REQUEST_HEADERS)
+            response = requests.get(
+                "https://www.spansh.co.uk/api/results/" + job["job"],
+                headers=REQUEST_HEADERS,
+            )
             response_dict = json.loads(response.text)
             if response_dict["status"] == "ok":
                 # log_function("Route successfully received")

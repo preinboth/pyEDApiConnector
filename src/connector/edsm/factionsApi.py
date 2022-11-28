@@ -6,6 +6,7 @@ class Factions(ApiEntryPoint):
     """
     Get information about factions in a system
     """
+
     url = ApiEntryPoint.url_edsm + "system-v1/factions"
 
     def __init__(self):
@@ -32,7 +33,7 @@ class Factions(ApiEntryPoint):
         :param showHistory: Set to 1 to get the factions history under the requested system.
         :return: json
         """
-        return cls.query({'systemName': systemName, 'showHistory': showHistory})
+        return cls.query({"systemName": systemName, "showHistory": showHistory})
 
     def getFactionById(cls, systemId, showHistory=0):
         """
@@ -42,7 +43,7 @@ class Factions(ApiEntryPoint):
         :param showHistory: Set to 1 to get the factions history under the requested system.
         :return: json
         """
-        return cls.query({'systemId': systemId, 'showHistory': showHistory})
+        return cls.query({"systemId": systemId, "showHistory": showHistory})
 
 
 # -------------------

@@ -6,6 +6,7 @@ class Bodies(ApiEntryPoint):
     """
     Informastion of Bodies
     """
+
     url = ApiEntryPoint.url_edsm + "system-v1/bodies"
 
     def __init__(self):
@@ -31,7 +32,7 @@ class Bodies(ApiEntryPoint):
         :param systemName: Name of a system
         :return: bodies in json
         """
-        json = cls.query({'systemName': systemName})
+        json = cls.query({"systemName": systemName})
         return json
 
     def getBodiesById(cls, systemId):
@@ -41,7 +42,7 @@ class Bodies(ApiEntryPoint):
         :param systemId: internal ID of a system
         :return: bodies in json
         """
-        json = cls.query({'systemId': str(systemId)})
+        json = cls.query({"systemId": str(systemId)})
         return json
 
 

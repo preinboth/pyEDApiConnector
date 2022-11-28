@@ -6,6 +6,7 @@ class Outfitting(ApiEntryPoint):
     """
     Get information about outfitting in a station
     """
+
     url = ApiEntryPoint.url_edsm + "system-v1/stations/outfitting"
 
     def __init__(self):
@@ -32,7 +33,7 @@ class Outfitting(ApiEntryPoint):
         :param stationName: The station inside the system.
         :return: json
         """
-        parameters = {'systemName': systemName, 'stationName': stationName}
+        parameters = {"systemName": systemName, "stationName": stationName}
         return cls.query(parameters)
 
     def getOutfittingById(cls, systemId, marketId):
@@ -43,7 +44,7 @@ class Outfitting(ApiEntryPoint):
         :param marketId: The game marketId, if used no other parameters are needed.
         :return: json
         """
-        parameters = {'systemId': systemId, 'marketId': marketId}
+        parameters = {"systemId": systemId, "marketId": marketId}
         return cls.query(parameters)
 
 

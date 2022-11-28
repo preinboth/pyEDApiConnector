@@ -6,6 +6,7 @@ class Deaths(ApiEntryPoint):
     """
     Get information about deaths in a system
     """
+
     url = ApiEntryPoint.url_edsm + "system-v1/deaths"
 
     def __init__(self):
@@ -30,7 +31,7 @@ class Deaths(ApiEntryPoint):
         :param systemName: The system name
         :return: json
         """
-        return cls.query({'systemName': systemName})
+        return cls.query({"systemName": systemName})
 
     def getDeathsById(cls, systemId):
         """
@@ -39,7 +40,7 @@ class Deaths(ApiEntryPoint):
         :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
         :return: json
         """
-        return cls.query({'systemId': systemId})
+        return cls.query({"systemId": systemId})
 
 
 # -------------------

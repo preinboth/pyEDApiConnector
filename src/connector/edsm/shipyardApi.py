@@ -4,17 +4,18 @@ from connector.base.base import ApiEntryPoint
 
 class Shipyard(ApiEntryPoint):
     """
-     Get information about shipyard in a station
-     """
+    Get information about shipyard in a station
+    """
+
     url = ApiEntryPoint.url_edsm + "system-v1/stations/shipyard"
 
     def query(cls, params):
         """
-         create the query based on the parameters and retrieve data from Api
+        create the query based on the parameters and retrieve data from Api
 
-         :param params:
-         :return: json
-         """
+        :param params:
+        :return: json
+        """
         try:
             json = super().query(params)
         except exception.NotFoundError:
@@ -29,7 +30,7 @@ class Shipyard(ApiEntryPoint):
         :param stationName: The station name inside the system.
         :return: json
         """
-        json = cls.query({'systemName': systemName, 'stationName': stationName})
+        json = cls.query({"systemName": systemName, "stationName": stationName})
         return json
 
     def getShipyardById(cls, systemId, marketId):
@@ -40,7 +41,7 @@ class Shipyard(ApiEntryPoint):
         :param marketId: The game marketId
         :return: json
         """
-        json = cls.query({'systemId': systemId, 'marketId': marketId})
+        json = cls.query({"systemId": systemId, "marketId": marketId})
         return json
 
 

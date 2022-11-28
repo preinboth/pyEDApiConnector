@@ -1,12 +1,9 @@
 import unittest
 
-from src.connector.spansh.spansh_cntl import SpanshCntl
-
 
 class TestRoutePlanner(unittest.TestCase):
     def test_routePlanner(self):
         print(" Test running")
-        pass
         # self.spansh_cntl = SpanshCntl()
         # route = self.spansh_cntl.routePlanner("HIP 117029", "Drojia YW-B d13-4", 1, 499)
         # for i in route:
@@ -16,5 +13,5 @@ class TestRoutePlanner(unittest.TestCase):
         #         break
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -7,5 +7,5 @@ class Test_CmdrCredits(unittest.TestCase):
         assert True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

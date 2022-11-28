@@ -6,6 +6,7 @@ class ScanValues(ApiEntryPoint):
     """
     Get estimated scan values of a system
     """
+
     url = ApiEntryPoint.url_edsm + "system-v1/estimated-value"
 
     def __init__(self):
@@ -13,11 +14,11 @@ class ScanValues(ApiEntryPoint):
 
     def query(cls, params):
         """
-         create the query based on the parameters and retrieve data from Api
+        create the query based on the parameters and retrieve data from Api
 
-         :param params:
-         :return: json
-         """
+        :param params:
+        :return: json
+        """
         try:
             json = super().query(params)
         except exception.NotFoundError:
@@ -31,7 +32,7 @@ class ScanValues(ApiEntryPoint):
         :param systemName: Name of a system
         :return: json
         """
-        json = cls.query({'systemName': systemName})
+        json = cls.query({"systemName": systemName})
         return json
 
     def getEstimatedValueById(cls, systemId):
@@ -41,7 +42,7 @@ class ScanValues(ApiEntryPoint):
         :param systemId: internal ID of a system
         :return: json
         """
-        json = cls.query({'systemId': str(systemId)})
+        json = cls.query({"systemId": str(systemId)})
         return json
 
 

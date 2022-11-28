@@ -10,9 +10,12 @@ edsm_cntl = EdsmCntl()
 
 
 def calculate_distance(coords_1, coords_2):
-    distance = math.sqrt((coords_1["x"] - coords_2["x"]) ** 2 + (coords_1["y"] - coords_2["y"]) ** 2 + (
-            coords_1["z"] - coords_2["z"]) ** 2)
-    distance = '{0:.2f}'.format(distance)
+    distance = math.sqrt(
+        (coords_1["x"] - coords_2["x"]) ** 2
+        + (coords_1["y"] - coords_2["y"]) ** 2
+        + (coords_1["z"] - coords_2["z"]) ** 2
+    )
+    distance = "{0:.2f}".format(distance)
     return distance
 
 
@@ -24,8 +27,15 @@ print("calculated distance: " + calculated)
 
 __version__ = "v0.0.1"
 REQUEST_HEADERS = {"user-agent": f"SpanshApi_{__version__}"}
-payload = {"efficiency": 1, "range": 20, "from": "HIP 117029", "to": "Drojia YW-B d13-4"}
-response = requests.post("https://www.spansh.co.uk/api/route", data=payload, headers=REQUEST_HEADERS)
+payload = {
+    "efficiency": 1,
+    "range": 20,
+    "from": "HIP 117029",
+    "to": "Drojia YW-B d13-4",
+}
+response = requests.post(
+    "https://www.spansh.co.uk/api/route", data=payload, headers=REQUEST_HEADERS
+)
 job = eval(response.text)
 
 if "error" in job:
@@ -35,7 +45,9 @@ if "error" in job:
 
 # Wait for job completion
 while 1:
-    response = requests.get("https://www.spansh.co.uk/api/results/" + job["job"], headers=REQUEST_HEADERS)
+    response = requests.get(
+        "https://www.spansh.co.uk/api/results/" + job["job"], headers=REQUEST_HEADERS
+    )
     response_dict = json.loads(response.text)
     if response_dict["status"] == "ok":
         # log_function("Route successfully received")

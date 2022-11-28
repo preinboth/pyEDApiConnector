@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyEDApiConnector"
+version = "0.0.1"
+authors = [
+    { name = "Peter Reinboth", email = "github@preinboth.de" },
+]
+description = "Elite Dangerous Api Connector"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy >= 1.22.0"
+]
+[project.optional-dependencies]
+dev = [
+    "autoflake",
+    "black",
+    "build",
+    "coverage",
+    "flake8",
+    "isort",
+    "mypy",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "toml",
+    "tox",
+    "twine",
+    "requests",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/preinboth/pyEDApiConnector"
+"Bug Tracker" = "https://github.com/preinboth/pyEDApiConnector/issues"
+
+[tool.autoflake]
+ignore-init-module-imports = true
+in-place = true
+recursive = true
+remove-all-unused-imports = true
+remove-unused-variables = true
+
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+addopts = "-ra -v --cov --cov-report term-missing"
+minversion = 7.0
+pythonpath = ["src"]
+testpaths = ["tests"]

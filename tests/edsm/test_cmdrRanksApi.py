@@ -1,6 +1,5 @@
 import unittest
 
-
 # from connector.edsm.cmdrRanksApi import cmdrRanks
 
 
@@ -10,5 +9,5 @@ class TestCmdrRanks(unittest.TestCase):
         assert True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

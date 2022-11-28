@@ -6,6 +6,7 @@ class Attractions(ApiEntryPoint):
     """
     Attractions
     """
+
     url = ApiEntryPoint.url_eddb + "attractions.json"
 
     def __init__(self):
@@ -23,7 +24,7 @@ class Attractions(ApiEntryPoint):
         return json
 
     def get_attractions_by_name(cls, name):
-        data = cls.query({'name': name})
+        data = cls.query({"name": name})
         filtered = []
         for i in data:
             if i["name"] == name:

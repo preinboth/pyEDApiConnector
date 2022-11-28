@@ -65,4 +65,3 @@ and another for the Pull Request, merging or cherry-picking commits as needed.
   One thing at a time is best.
 
 ---
-

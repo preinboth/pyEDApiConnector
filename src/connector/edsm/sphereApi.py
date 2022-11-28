@@ -6,6 +6,7 @@ class Sphere(ApiEntryPoint):
     """
     Get systems in a sphere radius
     """
+
     url = ApiEntryPoint.url_edsm + "v1/sphere-systems"
 
     def __init__(self):
@@ -32,10 +33,16 @@ class Sphere(ApiEntryPoint):
         :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
         :param radius: Set to the desired radius In ly. Maximum value is 100.
         """
-        parameters = {'showId': 1, 'showCoordinates': 1,
-                      'showPermit': 1, 'showInformation': 1,
-                      'showPrimaryStar': 1,
-                      'systemName': systemName, 'minradius': minradius, 'radius': radius}
+        parameters = {
+            "showId": 1,
+            "showCoordinates": 1,
+            "showPermit": 1,
+            "showInformation": 1,
+            "showPrimaryStar": 1,
+            "systemName": systemName,
+            "minradius": minradius,
+            "radius": radius,
+        }
         json = cls.query(parameters)
         return json
 
@@ -53,11 +60,18 @@ class Sphere(ApiEntryPoint):
         :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
         :param radius: Set to the desired radius In ly. Maximum value is 100.
         """
-        parameters = {'showId': 1, 'showCoordinates': 1,
-                      'showPermit': 1, 'showInformation': 1,
-                      'showPrimaryStar': 1,
-                      'x': coords['x'], 'y': coords['y'], 'z': coords['z'],
-                      'minradius': minradius, 'radius': radius}
+        parameters = {
+            "showId": 1,
+            "showCoordinates": 1,
+            "showPermit": 1,
+            "showInformation": 1,
+            "showPrimaryStar": 1,
+            "x": coords["x"],
+            "y": coords["y"],
+            "z": coords["z"],
+            "minradius": minradius,
+            "radius": radius,
+        }
         json = cls.query(parameters)
         return json
 

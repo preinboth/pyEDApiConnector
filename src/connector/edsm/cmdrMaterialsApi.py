@@ -6,6 +6,7 @@ class CmdrMaterials(ApiEntryPoint):
     """
     Get commander materials/encoded data/cargo
     """
+
     url = ApiEntryPoint.url_edsm + "commander-v1/get-materials"
 
     def __init__(self):
@@ -13,11 +14,11 @@ class CmdrMaterials(ApiEntryPoint):
 
     def query(cls, params):
         """
-         create the query based on the parameters and retrieve data from Api
+        create the query based on the parameters and retrieve data from Api
 
-         :param params:
-         :return: json
-         """
+        :param params:
+        :return: json
+        """
         try:
             json = super().query(params)
         except exception.NotFoundError:
@@ -32,16 +33,16 @@ class CmdrMaterials(ApiEntryPoint):
         :param api_key: The API Key associate the commander name with his account.
         :return: json
         """
-        params = {'commanderName': cmdrname, 'apiKey': api_key}
+        params = {"commanderName": cmdrname, "apiKey": api_key}
         json = cls.query(params)
-        if json['msgnum'] == 201:
+        if json["msgnum"] == 201:
             # 201 Missing commander name
             raise exception.CommanderNotFoundError(cls.url, params)
-        elif json['msgnum'] == 203:
+        elif json["msgnum"] == 203:
             # 203 Commander name / API Key not found
-            params = (params + "," + json['msgnum'])
+            params = params + "," + json["msgnum"]
             raise exception.ApiKeyNotFoundError(cls.url, params)
-        elif json['msgnum'] == 207:
+        elif json["msgnum"] == 207:
             # 207 No ranks stored
             raise exception.CmdrNoRanksStored(cls.url, params)
         return json
