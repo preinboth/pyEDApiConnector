@@ -6,6 +6,7 @@ class Market(ApiEntryPoint):
     """
     Get information about market in a station
     """
+
     url = ApiEntryPoint.url_edsm + "system-v1/stations/market"
 
     def __init__(self):
@@ -32,7 +33,7 @@ class Market(ApiEntryPoint):
         :param stationName: The station name inside the system.
         :return: json
         """
-        json = cls.query({'systemName': systemName, 'stationName': stationName})
+        json = cls.query({"systemName": systemName, "stationName": stationName})
         return json
 
     def getMarketById(cls, systemId, marketId):
@@ -43,7 +44,7 @@ class Market(ApiEntryPoint):
         :param marketId: The game marketId
         :return: json
         """
-        json = cls.query({'systemId': systemId, 'marketId': marketId})
+        json = cls.query({"systemId": systemId, "marketId": marketId})
         return json
 
 

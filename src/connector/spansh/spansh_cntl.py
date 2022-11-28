@@ -1,7 +1,7 @@
 from connector.spansh.spanshApi import RoutePlanner
 
 
-class SpanshCntl():
+class SpanshCntl:
     __route_planner = RoutePlanner()
 
     def __init__(self):

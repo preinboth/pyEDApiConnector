@@ -6,6 +6,7 @@ class Traffic(ApiEntryPoint):
     """
     Get information about traffic in a system
     """
+
     url = ApiEntryPoint.url_edsm + "system-v1/traffic"
 
     def __init__(self):
@@ -31,7 +32,7 @@ class Traffic(ApiEntryPoint):
         :param systemName: The system name
         :return: json
         """
-        return cls.query({'systemName': systemName})
+        return cls.query({"systemName": systemName})
 
     def getTrafficById(cls, systemId):
         """
@@ -40,7 +41,7 @@ class Traffic(ApiEntryPoint):
         :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
         :return: json
         """
-        return cls.query({'systemId': systemId})
+        return cls.query({"systemId": systemId})
 
 
 # --------------

@@ -1,10 +1,9 @@
 from src.connector.eddb.eddbApi import Attractions
 
 
-class EddbCntl():
-    """
+class EddbCntl:
+    """ """
 
-    """
     __eddb_attractions = Attractions()
 
     def __init__(self):

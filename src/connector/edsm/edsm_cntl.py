@@ -13,7 +13,7 @@ from connector.edsm.statusApi import server_status
 from connector.edsm.trafficApi import traffic
 
 
-class EdsmCntl():
+class EdsmCntl:
     # TODO: Documentation
     # TODO: Implementation
 

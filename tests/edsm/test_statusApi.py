@@ -10,5 +10,5 @@ class TestEdsmServerStatus(unittest.TestCase):
             self.fail("Not Data found")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

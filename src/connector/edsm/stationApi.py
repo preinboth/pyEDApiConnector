@@ -6,6 +6,7 @@ class Station(ApiEntryPoint):
     """
     Get information about stations in a system
     """
+
     url = ApiEntryPoint.url_edsm + "system-v1/stations"
 
     def __init__(self):
@@ -13,11 +14,11 @@ class Station(ApiEntryPoint):
 
     def query(cls, params):
         """
-         create the query based on the parameters and retrieve data from Api
+        create the query based on the parameters and retrieve data from Api
 
-         :param params:
-         :return: json
-         """
+        :param params:
+        :return: json
+        """
         try:
             json = super().query(params)
         except exception.NotFoundError:
@@ -32,7 +33,7 @@ class Station(ApiEntryPoint):
         :param exclude: List of excluded stationtypes
         :return: json
         """
-        parameters = {'systemName': systemName}
+        parameters = {"systemName": systemName}
         return cls.query(parameters)
 
     def getStationById(cls, systemId):
@@ -43,7 +44,7 @@ class Station(ApiEntryPoint):
         :param exclude: List of excluded stationtypes
         :return: json
         """
-        parameters = {'systemId': int(systemId)}
+        parameters = {"systemId": int(systemId)}
         # TODO: Stations filtern
         return cls.query(parameters)
 

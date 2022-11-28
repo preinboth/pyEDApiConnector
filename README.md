@@ -5,4 +5,4 @@
 
 in progress
 
-[Api implemented so far](implementedApi.md) 
+[Api implemented so far](implementedApi.md)
