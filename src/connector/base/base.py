@@ -1,6 +1,6 @@
 import requests
 
-from connector import base as exception
+from src.connector import base as exception
 
 
 class ApiEntryPoint:
