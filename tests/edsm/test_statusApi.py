@@ -1,6 +1,6 @@
 import unittest
 
-from connector.edsm.statusApi import server_status
+from EDApiConnector.connector.edsm.statusApi import server_status
 
 
 class TestEdsmServerStatus(unittest.TestCase):

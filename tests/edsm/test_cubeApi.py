@@ -1,6 +1,6 @@
 import unittest
 
-from connector.edsm.cubeApi import cube
+from EDApiConnector.connector.edsm.cubeApi import cube
 
 
 class TestEdsmCube(unittest.TestCase):

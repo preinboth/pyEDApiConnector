@@ -1,6 +1,6 @@
 import unittest
 
-from src.connector.edsm.scanValuesApi import scan_values
+from EDApiConnector.connector.edsm.scanValuesApi import scan_values
 
 
 class Test_systemScanValues(unittest.TestCase):

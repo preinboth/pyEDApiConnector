@@ -1,13 +1,13 @@
-from connector.base import exception
-from connector.base.base import ApiEntryPoint
+from EDApiConnector.connector.base import exception
+from EDApiConnector.connector.base.base import ApiEntryPoint
 
 
-class CmdrMaterials(ApiEntryPoint):
+class CmdrRanks(ApiEntryPoint):
     """
-    Get commander materials/encoded data/cargo
+    Get commander ranks
     """
 
-    url = ApiEntryPoint.url_edsm + "commander-v1/get-materials"
+    url = ApiEntryPoint.url_edsm + "commander-v1/get-ranks"
 
     def __init__(self):
         pass
@@ -25,9 +25,9 @@ class CmdrMaterials(ApiEntryPoint):
             raise exception.SystemNotFoundError(params)
         return json
 
-    def getCmdrMaterials(cls, cmdrname, api_key):
+    def getCmdrRanks(cls, cmdrname, api_key):
         """
-        Get commander materials/encoded data/cargo
+        Get commander ranks by CmdrName and APiKey
 
         :param cmdrname: The name of the commander as registered on EDSM.
         :param api_key: The API Key associate the commander name with his account.
@@ -49,4 +49,4 @@ class CmdrMaterials(ApiEntryPoint):
 
 
 # -------------------
-cmdrMaterials = CmdrMaterials()
+cmdrRanks = CmdrRanks()

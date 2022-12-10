@@ -1,13 +1,13 @@
-from connector.base import exception
-from connector.base.base import ApiEntryPoint
+from EDApiConnector.connector.base import exception
+from EDApiConnector.connector.base.base import ApiEntryPoint
 
 
-class Sphere(ApiEntryPoint):
+class Cube(ApiEntryPoint):
     """
-    Get systems in a sphere radius
+    Get systems in a cube
     """
 
-    url = ApiEntryPoint.url_edsm + "v1/sphere-systems"
+    url = ApiEntryPoint.url_edsm + "v1/cube-systems"
 
     def __init__(self):
         pass
@@ -25,13 +25,13 @@ class Sphere(ApiEntryPoint):
             raise exception.SystemNotFoundError(params)
         return json
 
-    def getSystemsSphereBySystemName(cls, systemName, minradius=0, radius=0):
+    def getSystemsCubeBySystemName(cls, systemName, size):
         """
-        Get systems in a sphere radius
+        Get systems in a cube by a system name which will be the center of the sphere.
 
         :param systemName: The system name which will be the center of the sphere.
-        :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
-        :param radius: Set to the desired radius In ly. Maximum value is 100.
+        :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
+        :param size: Set to the desired size of the cube In ly. Maximum value is 200.
         """
         parameters = {
             "showId": 1,
@@ -40,15 +40,13 @@ class Sphere(ApiEntryPoint):
             "showInformation": 1,
             "showPrimaryStar": 1,
             "systemName": systemName,
-            "minradius": minradius,
-            "radius": radius,
+            "size": size,
         }
-        json = cls.query(parameters)
-        return json
+        return cls.query(parameters)
 
-    def getSystemsSphereByCoords(cls, coords, minradius=0, radius=0):
+    def getSystemsCubeByCoords(cls, coords, size):
         """
-        Get systems in a sphere radius
+        Get systems in a cube by a coords which will be the center of the sphere.
 
         :param coords: If you don't want to use a system name, you can use coordinates as the center of the sphere.
                       Format Coords:
@@ -57,8 +55,7 @@ class Sphere(ApiEntryPoint):
                             'y': 0,
                             'z': 0,
                             }
-        :param minradius: Set to a value between 0 and radius to reduce the returned results. In ly.
-        :param radius: Set to the desired radius In ly. Maximum value is 100.
+        :param size: Set to the desired size of the cube In ly. Maximum value is 200.
         """
         parameters = {
             "showId": 1,
@@ -66,15 +63,13 @@ class Sphere(ApiEntryPoint):
             "showPermit": 1,
             "showInformation": 1,
             "showPrimaryStar": 1,
-            "x": coords["x"],
-            "y": coords["y"],
-            "z": coords["z"],
-            "minradius": minradius,
-            "radius": radius,
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "size": size,
         }
-        json = cls.query(parameters)
-        return json
+        return cls.query(parameters)
 
 
 # -------------------
-sphere = Sphere()
+cube = Cube()

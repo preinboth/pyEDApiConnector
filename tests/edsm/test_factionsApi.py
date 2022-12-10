@@ -1,6 +1,6 @@
 import unittest
 
-from src.connector.edsm.factionsApi import factions
+from EDApiConnector.connector.edsm.factionsApi import factions
 
 
 class TestEdsmFactions(unittest.TestCase):

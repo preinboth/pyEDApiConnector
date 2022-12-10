@@ -1,16 +1,16 @@
-from connector.edsm.bodiesApi import bodies
-from connector.edsm.cmdrCreaditsApi import cmdrCredits
-from connector.edsm.cmdrMaterialsApi import cmdrMaterials
-from connector.edsm.cmdrRanksApi import cmdrRanks
-from connector.edsm.deathsApi import deaths
-from connector.edsm.factionsApi import factions
-from connector.edsm.marketApi import market
-from connector.edsm.outfittingApi import outfitting
-from connector.edsm.scanValuesApi import scan_values
-from connector.edsm.shipyardApi import shipyard
-from connector.edsm.stationApi import station
-from connector.edsm.statusApi import server_status
-from connector.edsm.trafficApi import traffic
+from EDApiConnector.connector.edsm.bodiesApi import bodies
+from EDApiConnector.connector.edsm.cmdrCreaditsApi import cmdrCredits
+from EDApiConnector.connector.edsm.cmdrMaterialsApi import cmdrMaterials
+from EDApiConnector.connector.edsm.cmdrRanksApi import cmdrRanks
+from EDApiConnector.connector.edsm.deathsApi import deaths
+from EDApiConnector.connector.edsm.factionsApi import factions
+from EDApiConnector.connector.edsm.marketApi import market
+from EDApiConnector.connector.edsm.outfittingApi import outfitting
+from EDApiConnector.connector.edsm.scanValuesApi import scan_values
+from EDApiConnector.connector.edsm.shipyardApi import shipyard
+from EDApiConnector.connector.edsm.stationApi import station
+from EDApiConnector.connector.edsm.statusApi import server_status
+from EDApiConnector.connector.edsm.trafficApi import traffic
 
 
 class EdsmCntl:

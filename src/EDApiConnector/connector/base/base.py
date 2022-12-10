@@ -1,6 +1,6 @@
 import requests
 
-from src.connector import base as exception
+from EDApiConnector.connector import base as exception
 
 
 class ApiEntryPoint:

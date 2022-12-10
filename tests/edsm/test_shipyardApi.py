@@ -1,6 +1,6 @@
 import unittest
 
-from src.connector.edsm.shipyardApi import shipyard
+from EDApiConnector.connector.edsm.shipyardApi import shipyard
 
 
 class TestShipyard(unittest.TestCase):

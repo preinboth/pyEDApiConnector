@@ -1,4 +1,4 @@
-from src.connector.eddb.eddbApi import Attractions
+from EDApiConnector.connector.eddb.eddbApi import Attractions
 
 
 class EddbCntl:

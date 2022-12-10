@@ -1,6 +1,6 @@
 import unittest
 
-from connector.edsm.edsm_cntl import edsmCntl
+from EDApiConnector.connector.edsm.edsm_cntl import edsmCntl
 
 
 class EdsmApiTests(unittest.TestCase):
