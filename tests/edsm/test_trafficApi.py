@@ -1,6 +1,6 @@
 import unittest
 
-from src.connector.edsm.trafficApi import traffic
+from EDApiConnector.connector.edsm.trafficApi import traffic
 
 
 class TestEdsmTraffic(unittest.TestCase):

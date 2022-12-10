@@ -4,7 +4,7 @@ import time
 
 import requests
 
-from connector.edsm.edsm_cntl import EdsmCntl
+from EDApiConnector.connector.edsm.edsm_cntl import EdsmCntl
 
 edsm_cntl = EdsmCntl()
 

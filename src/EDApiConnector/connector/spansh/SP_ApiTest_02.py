@@ -1,4 +1,4 @@
-from src.connector.spansh.spansh_cntl import SpanshCntl
+from EDApiConnector.connector.spansh.spansh_cntl import SpanshCntl
 
 spansh_cntl = SpanshCntl()
 

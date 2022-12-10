@@ -1,4 +1,4 @@
-from connector.spansh.spanshApi import RoutePlanner
+from EDApiConnector.connector.spansh.spanshApi import RoutePlanner
 
 
 class SpanshCntl:

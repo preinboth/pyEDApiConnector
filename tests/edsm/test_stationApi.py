@@ -1,6 +1,6 @@
 import unittest
 
-from src.connector.edsm.stationApi import station
+from EDApiConnector.connector.edsm.stationApi import station
 
 
 class TestSystemStation(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 
-from connector.edsm.outfittingApi import outfitting
+from EDApiConnector.connector.edsm.outfittingApi import outfitting
 
 
 class TestCmdrRanks(unittest.TestCase):

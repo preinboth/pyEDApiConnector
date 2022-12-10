@@ -1,6 +1,6 @@
 import unittest
 
-from connector.edsm.deathsApi import deaths
+from EDApiConnector.connector.edsm.deathsApi import deaths
 
 
 class TestEdsmDeaths(unittest.TestCase):

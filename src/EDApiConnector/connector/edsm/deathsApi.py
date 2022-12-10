@@ -1,13 +1,13 @@
-from connector.base import exception
-from connector.base.base import ApiEntryPoint
+from EDApiConnector.connector.base import exception
+from EDApiConnector.connector.base.base import ApiEntryPoint
 
 
-class Traffic(ApiEntryPoint):
+class Deaths(ApiEntryPoint):
     """
-    Get information about traffic in a system
+    Get information about deaths in a system
     """
 
-    url = ApiEntryPoint.url_edsm + "system-v1/traffic"
+    url = ApiEntryPoint.url_edsm + "system-v1/deaths"
 
     def __init__(self):
         pass
@@ -15,7 +15,6 @@ class Traffic(ApiEntryPoint):
     def query(cls, params):
         """
         Build the query for call of the api
-
         :param params:
         :return:
         """
@@ -25,18 +24,18 @@ class Traffic(ApiEntryPoint):
             raise exception.SystemNotFoundError(params)
         return json
 
-    def getTrafficSystem(cls, systemName):
+    def getDeaths(cls, systemName):
         """
-        Get information about traffic in a system by a systemname
+        Get information about deaths in a system by SystemName
 
         :param systemName: The system name
         :return: json
         """
         return cls.query({"systemName": systemName})
 
-    def getTrafficById(cls, systemId):
+    def getDeathsById(cls, systemId):
         """
-        Get information about traffic in a system by a systemId
+        Get information about deaths in a system by SystemId
 
         :param systemId: The system ID if you seek for a duplicate system and want to force a specific ID.
         :return: json
@@ -44,5 +43,5 @@ class Traffic(ApiEntryPoint):
         return cls.query({"systemId": systemId})
 
 
-# --------------
-traffic = Traffic()
+# -------------------
+deaths = Deaths()

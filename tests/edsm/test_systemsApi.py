@@ -1,6 +1,6 @@
 import unittest
 
-from src.connector.edsm.systemsApi import systems
+from EDApiConnector.connector.edsm.systemsApi import systems
 
 
 class Test_Systems(unittest.TestCase):

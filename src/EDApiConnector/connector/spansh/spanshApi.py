@@ -4,8 +4,8 @@ import time
 
 import requests
 
-from connector.base.base import ApiEntryPoint
-from connector.edsm.edsm_cntl import EdsmCntl
+from EDApiConnector.connector.base.base import ApiEntryPoint
+from EDApiConnector.connector.edsm.edsm_cntl import EdsmCntl
 from utils.utils import calculate_distance
 
 log = logging.getLogger(__name__)

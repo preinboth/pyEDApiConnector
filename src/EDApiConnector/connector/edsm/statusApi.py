@@ -1,4 +1,4 @@
-from connector.base.base import ApiEntryPoint
+from EDApiConnector.connector.base.base import ApiEntryPoint
 
 
 class ServerStatus(ApiEntryPoint):

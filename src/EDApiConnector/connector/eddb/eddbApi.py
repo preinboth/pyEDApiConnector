@@ -1,5 +1,5 @@
-from src.connector.base import exception
-from src.connector.base.base import ApiEntryPoint
+from EDApiConnector.connector.base import exception
+from EDApiConnector.connector.base.base import ApiEntryPoint
 
 
 class Attractions(ApiEntryPoint):

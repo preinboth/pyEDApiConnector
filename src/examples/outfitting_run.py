@@ -1,4 +1,4 @@
-from src.connector.edsm.outfittingApi import outfitting
+from EDApiConnector.connector.edsm.outfittingApi import outfitting
 
 exclude = ["Fleet Carrier", "Odyssey Settlement"]
 systems = ["GaCrux", "Waq", "Hotaiko"]

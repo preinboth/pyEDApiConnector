@@ -1,6 +1,6 @@
 import unittest
 
-from connector.edsm.sphereApi import sphere
+from EDApiConnector.connector.edsm.sphereApi import sphere
 
 
 class TestSphere(unittest.TestCase):

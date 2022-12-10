@@ -1,6 +1,6 @@
 import unittest
 
-from connector.edsm.marketApi import market
+from EDApiConnector.connector.edsm.marketApi import market
 
 
 class TestEdsmMarketApi(unittest.TestCase):
